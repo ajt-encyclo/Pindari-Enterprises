@@ -22,11 +22,60 @@
             }
         }
     </script>
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: 200%;
+            animation: marquee 25s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+    </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
 
-    <!-- Header Navigation -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <!-- Top Live Ticker Bar (Live Messages & Real-Time Date/Time) -->
+    <div class="bg-slate-900 text-white border-b border-slate-800 text-xs py-2 px-4 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            
+            <!-- Live Badge & Scrolling Ticker -->
+            <div class="flex items-center space-x-3 w-full sm:w-auto overflow-hidden">
+                <span class="bg-brandRed text-white text-[10px] font-black uppercase px-2 py-0.5 rounded flex items-center shrink-0 animate-pulse">
+                    <i class="fa-solid fa-circle text-[6px] mr-1.5"></i> LIVE UPDATES
+                </span>
+                
+                <div class="overflow-hidden whitespace-nowrap relative w-full sm:w-[500px] md:w-[650px] lg:w-[800px]">
+                    <div class="animate-marquee text-slate-300 font-medium text-[11px] space-x-8">
+                        <span>⚡ <strong class="text-white">Rahul Verma</strong> joined <strong class="text-red-400">RK Polymer</strong> as CNC Operator (3 days ago)</span>
+                        <span>🔥 <strong class="text-yellow-400">URGENT REQUIREMENT:</strong> 5 CNC Operators required at <strong class="text-white">Dankal Tech, Nigdi</strong></span>
+                        <span>⚡ <strong class="text-white">Amit Kumar</strong> joined <strong class="text-red-400">Kraft Plast Inds</strong> as Helper (1 day ago)</span>
+                        <span>📢 <strong class="text-emerald-400">NEW OPENING:</strong> 8 Machine Operators needed at <strong class="text-white">Apex Engineers</strong></span>
+                        <span>⚡ <strong class="text-white">Suresh Mane</strong> joined <strong class="text-red-400">Technova</strong> as Lathe Operator (5 hours ago)</span>
+                        <!-- Duplicate for seamless loop -->
+                        <span>⚡ <strong class="text-white">Rahul Verma</strong> joined <strong class="text-red-400">RK Polymer</strong> as CNC Operator (3 days ago)</span>
+                        <span>🔥 <strong class="text-yellow-400">URGENT REQUIREMENT:</strong> 5 CNC Operators required at <strong class="text-white">Dankal Tech, Nigdi</strong></span>
+                        <span>⚡ <strong class="text-white">Amit Kumar</strong> joined <strong class="text-red-400">Kraft Plast Inds</strong> as Helper (1 day ago)</span>
+                        <span>📢 <strong class="text-emerald-400">NEW OPENING:</strong> 8 Machine Operators needed at <strong class="text-white">Apex Engineers</strong></span>
+                        <span>⚡ <strong class="text-white">Suresh Mane</strong> joined <strong class="text-red-400">Technova</strong> as Lathe Operator (5 hours ago)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Clock & Date -->
+            <div class="flex items-center space-x-2 text-[11px] text-slate-400 font-mono shrink-0">
+                <i class="fa-regular fa-clock text-brandRed"></i>
+                <span id="liveDateTime">Loading Date & Time...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-9 z-40 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             
             <!-- Company Logo & Title -->
@@ -47,6 +96,7 @@
             <nav class="hidden lg:flex space-x-8 text-sm font-semibold text-slate-600">
                 <a href="#features" class="hover:text-brandRed transition">Features & Solutions</a>
                 <a href="#clients" class="hover:text-brandRed transition">Industry Clients</a>
+                <a href="#reviews" class="hover:text-brandRed transition">Client Reviews</a>
                 <a href="#portal" class="hover:text-brandRed transition">Service Desk</a>
                 <a href="#contact" class="hover:text-brandRed transition">Contact Us</a>
             </nav>
@@ -65,7 +115,7 @@
         </div>
     </header>
 
-    <!-- Main Website View -->
+    <!-- Main Content -->
     <main>
         <!-- Hero Section -->
         <section class="bg-white py-16 px-4 border-b border-slate-200">
@@ -153,7 +203,7 @@
                     </div>
                     <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
                         <div>
-                            <h5 class="font-bold text-slate-900 text-sm">R K Polymer</h5>
+                            <h5 class="font-bold text-slate-900 text-sm">RK Polymer</h5>
                             <p class="text-[11px] text-slate-500"><i class="fa-solid fa-user-tie text-brandRed mr-1"></i>Mr. Amol Shah</p>
                         </div>
                         <span class="text-xs bg-red-100 text-brandRed font-bold px-2 py-0.5 rounded">Active</span>
@@ -201,6 +251,82 @@
                         <span class="text-xs bg-red-100 text-brandRed font-bold px-2 py-0.5 rounded">Active</span>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Bold Client Reviews / Testimonials Section -->
+        <section id="reviews" class="py-16 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="bg-red-100 text-brandRed font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Verified Reviews</span>
+                <h3 class="text-2xl md:text-3xl font-black text-slate-900 mt-3" id="reviewTitle">WHAT OUR CLIENTS SAY ABOUT US</h3>
+                <p class="text-slate-500 text-xs md:text-sm mt-1">Real feedback from manufacturing unit heads & managers in PCMC</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Review 1 -->
+                <div class="bg-white p-6 rounded-2xl border-2 border-slate-200 shadow-lg hover:border-brandRed transition relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-sm mb-3">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-900 text-sm md:text-base font-extrabold leading-snug mb-4">
+                            "PINDARI ENTERPRISES PROVIDED US WITH 15 CNC OPERATORS WITHIN 24 HOURS! EXCELLENT SERVICE & HIGHLY DISCIPLINED WORKFORCE."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <div>
+                            <h5 class="font-black text-slate-900 text-xs uppercase">Mr. Sachin Dandekar</h5>
+                            <p class="text-[11px] text-brandRed font-bold">Dankal Tech, Nigdi</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-brandRed font-bold text-xs">
+                            <i class="fa-solid fa-quote-right"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white p-6 rounded-2xl border-2 border-slate-200 shadow-lg hover:border-brandRed transition relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-sm mb-3">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-900 text-sm md:text-base font-extrabold leading-snug mb-4">
+                            "THE MOST TRANSPARENT PAYROLL AND ADVANCE SYSTEM IN PCMC INDUSTRIAL AREA. OUR PRODUCTION HAS NEVER SUFFERED SINGLE MANPOWER SHORTAGE!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <div>
+                            <h5 class="font-black text-slate-900 text-xs uppercase">Mr. Amol Shah</h5>
+                            <p class="text-[11px] text-brandRed font-bold">RK Polymer</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-brandRed font-bold text-xs">
+                            <i class="fa-solid fa-quote-right"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white p-6 rounded-2xl border-2 border-slate-200 shadow-lg hover:border-brandRed transition relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-sm mb-3">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-900 text-sm md:text-base font-extrabold leading-snug mb-4">
+                            "ALL WORKERS ARE PROPERLY VERIFIED WITH AADHAR & POLICE RECORD CHECKS. HIGHLY RECOMMENDED FOR RELIABLE INDUSTRIAL STAFFING!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <div>
+                            <h5 class="font-black text-slate-900 text-xs uppercase">Mr. Sanket Shah</h5>
+                            <p class="text-[11px] text-brandRed font-bold">Kraft Plast Inds</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-brandRed font-bold text-xs">
+                            <i class="fa-solid fa-quote-right"></i>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -253,7 +379,7 @@
                                 <select class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900">
                                     <option>Not Assigned (New Applicant)</option>
                                     <option>Dankal Tech</option>
-                                    <option>R K Polymer</option>
+                                    <option>RK Polymer</option>
                                     <option>Kraft Plast Inds</option>
                                     <option>Apex Engineers</option>
                                     <option>Suhas Enterprises</option>
@@ -329,13 +455,22 @@
         </div>
     </footer>
 
-    <!-- Floating WhatsApp -->
+    <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/919860109069?text=Hello%20Pindari%20Enterprises,%20I%20have%20a%20query." target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-2xl transition-transform hover:scale-110 z-40">
         <i class="fa-brands fa-whatsapp text-2xl"></i>
     </a>
 
     <script>
         let isHindi = false;
+
+        // Live Date & Clock Script
+        function updateClock() {
+            const now = new Date();
+            const options = { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+            document.getElementById('liveDateTime').innerText = now.toLocaleString('en-IN', options);
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
 
         function toggleLanguage() {
             isHindi = !isHindi;
@@ -346,11 +481,13 @@
                 document.getElementById('heroTitle').innerHTML = 'औद्योगिक मैनपावर प्रबंधन, <br><span class="text-brandRed">आसान और भरोसेमंद</span>';
                 document.getElementById('heroDesc').innerText = 'निगड़ी, भोसरी, चाकन और पीसीएमसी में कुशल, अर्ध-कुशल, अकुशल और मशीन ऑपरेटर मैनपावर सेवाएं।';
                 document.getElementById('clientHeader').innerText = 'हमारे प्रमुख औद्योगिक पार्टनर्स';
+                document.getElementById('reviewTitle').innerText = 'हमारे क्लाइंट्स का भरोसा';
             } else {
                 document.getElementById('subHeaderTag').innerText = 'Staffing & Industrial Platform';
                 document.getElementById('heroTitle').innerHTML = 'Manage & Deploy Industrial Manpower, <br><span class="text-brandRed">All From One Unified Platform</span>';
                 document.getElementById('heroDesc').innerText = 'Providing Skilled, Semi-Skilled, Unskilled, Machine Operators, and Workforce Staffing Solutions across Nigdi, Bhosari, Chakan, and PCMC region.';
                 document.getElementById('clientHeader').innerText = 'Our Trusted Industry Partners';
+                document.getElementById('reviewTitle').innerText = 'WHAT OUR CLIENTS SAY ABOUT US';
             }
         }
 
