@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pindari Enterprises | Enterprise Staffing & Portal Console</title>
+    <title>Pindari Enterprises | Staffing & Industrial Platform</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -13,7 +15,8 @@
                     colors: {
                         brandRed: '#DC2626',
                         brandDarkRed: '#991B1B',
-                        brandDark: '#0F172A'
+                        brandDark: '#0F172A',
+                        brandGray: '#F8FAFC'
                     }
                 }
             }
@@ -22,8 +25,11 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
 
+    <!-- Modern Navigation Header -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            
+            <!-- Company Logo & Title -->
             <div class="flex items-center space-x-3">
                 <div class="w-11 h-11 bg-white rounded-xl p-1 shadow-md border-2 border-brandRed flex items-center justify-center">
                     <svg viewBox="0 0 100 100" class="w-full h-full">
@@ -33,96 +39,285 @@
                 </div>
                 <div>
                     <span class="text-lg md:text-xl font-black tracking-wider text-slate-900 leading-none block">PINDARI ENTERPRISES</span>
-                    <span class="text-xs text-brandRed font-bold tracking-widest uppercase">Phase 2 Enterprise Portal System</span>
+                    <span class="text-xs text-brandRed font-bold tracking-widest uppercase" id="subHeaderTag">Staffing & Industrial Platform</span>
                 </div>
             </div>
 
+            <!-- Central Nav Links -->
+            <nav class="hidden lg:flex space-x-8 text-sm font-semibold text-slate-600">
+                <a href="#features" class="hover:text-brandRed transition">Features & Solutions</a>
+                <a href="#clients" class="hover:text-brandRed transition">Industry Clients</a>
+                <a href="#portal" class="hover:text-brandRed transition">Service Desk</a>
+                <a href="#contact" class="hover:text-brandRed transition">Contact Us</a>
+            </nav>
+
+            <!-- Language & Portal Login -->
             <div class="flex items-center space-x-3">
-                <button onclick="openModal()" class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold px-4 py-2 rounded-lg shadow transition flex items-center space-x-1.5">
-                    <i class="fa-solid fa-right-to-bracket text-brandRed"></i>
+                <button onclick="toggleLanguage()" id="langBtn" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-3 py-2 rounded-lg border border-slate-300 flex items-center space-x-1.5 transition">
+                    <i class="fa-solid fa-globe text-brandRed"></i>
+                    <span id="langLabel">हिंदी</span>
+                </button>
+                <button onclick="openModal()" class="bg-brandRed hover:bg-brandDarkRed text-white text-xs font-bold px-4 py-2 rounded-lg shadow transition flex items-center space-x-1.5">
+                    <i class="fa-solid fa-right-to-bracket"></i>
                     <span>Portal Login</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <div class="bg-slate-900 text-white py-2 px-4 text-xs font-semibold border-b border-slate-800">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <span class="flex items-center text-emerald-400">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping mr-2"></span> Phase 2 Multi-Role Portal Engine Active
-            </span>
-            <span class="text-slate-400 hidden sm:inline">Nigdi, Chakan & PCMC Region Operations</span>
-        </div>
-    </div>
-
+    <!-- Main Website View (Default Visible Screen) -->
     <main id="publicView">
-        <section class="bg-white py-14 px-4 border-b border-slate-200">
+        <!-- Hero Section -->
+        <section class="bg-white py-16 px-4 border-b border-slate-200">
             <div class="max-w-5xl mx-auto text-center">
-                <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-4">
-                    Unified Industrial Workforce & <br><span class="text-brandRed">Enterprise Management Portal</span>
+                <a href="#contact" class="bg-red-50 text-brandRed text-xs font-bold px-4 py-2 rounded-full uppercase border border-red-200 tracking-wider inline-flex items-center space-x-2 mb-6 shadow-sm hover:bg-red-100 transition">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Sunrise Tower, Nigdi, Pune</span>
+                </a>
+                
+                <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-4" id="heroTitle">
+                    Manage & Deploy Industrial Manpower, <br><span class="text-brandRed">All From One Unified Platform</span>
                 </h1>
-                <p class="text-slate-600 text-sm md:text-base max-w-2xl mx-auto mb-6">
-                    Real-time deployment tracking, advance requests, worker verification, and company attendance modules.
+                <p class="text-slate-600 text-sm md:text-base max-w-3xl mx-auto mb-8 leading-relaxed" id="heroDesc">
+                    Providing Skilled, Semi-Skilled, Unskilled, Machine Operators, and Workforce Staffing Solutions across Nigdi, Bhosari, Chakan, and PCMC region.
                 </p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <button onclick="openRoleLogin('Worker')" class="bg-brandRed hover:bg-brandDarkRed text-white font-bold px-6 py-3 rounded-lg shadow-lg text-sm transition">
-                        <i class="fa-solid fa-user-check mr-1.5"></i> Worker Portal Login
-                    </button>
-                    <button onclick="openRoleLogin('Employer')" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3 rounded-lg shadow-lg text-sm transition">
-                        <i class="fa-solid fa-building-user mr-1.5"></i> Employer Login
-                    </button>
-                    <button onclick="openRoleLogin('Admin')" class="bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 font-bold px-6 py-3 rounded-lg text-sm transition">
-                        <i class="fa-solid fa-shield-halved text-brandRed mr-1.5"></i> Admin Console
-                    </button>
+                <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+                    <a href="#portal" onclick="switchTab('worker')" class="bg-brandRed hover:bg-brandDarkRed text-white font-bold px-6 py-3 rounded-lg shadow-lg text-sm transition flex items-center justify-center">
+                        <i class="fa-solid fa-user-check mr-2"></i> Worker Registration / Portal
+                    </a>
+                    <a href="#portal" onclick="switchTab('employer')" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3 rounded-lg shadow-lg text-sm transition flex items-center justify-center">
+                        <i class="fa-solid fa-building-user mr-2"></i> Client Hiring Desk
+                    </a>
                 </div>
             </div>
         </section>
 
-        <section class="py-12 px-4 max-w-7xl mx-auto">
-            <div class="text-center mb-8">
-                <h2 class="text-2xl font-black text-slate-900">Explore Phase 2 Portal Modules</h2>
-                <p class="text-slate-500 text-xs mt-1">Select a role below to simulate real-time enterprise dashboard demo</p>
+        <!-- Solutions Grid -->
+        <section id="features" class="py-16 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-xs font-bold text-brandRed uppercase tracking-widest mb-1">Platform Solutions</h2>
+                <h3 class="text-2xl md:text-3xl font-black text-slate-900" id="featureHead">End-to-End Workforce Management Solutions</h3>
+                <p class="text-slate-500 text-xs md:text-sm mt-1">Comprehensive staffing, deployment, and operational workforce lifecycle control</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-red-50 text-brandRed rounded-xl flex items-center justify-center mb-4 text-xl">
-                        <i class="fa-solid fa-id-card"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-xl border border-slate-200 hover:border-brandRed transition shadow-sm hover:shadow-md">
+                    <div class="w-12 h-12 bg-red-50 text-brandRed rounded-xl flex items-center justify-center mb-4 text-xl border border-red-100">
+                        <i class="fa-solid fa-users-gear"></i>
                     </div>
-                    <h3 class="font-bold text-slate-900 text-lg mb-1">Worker Self-Service</h3>
-                    <p class="text-slate-500 text-xs mb-4">Submit salary advance requests, view duty roster, track monthly attendance.</p>
-                    <button onclick="demoLogin('Worker')" class="w-full bg-slate-100 hover:bg-brandRed hover:text-white text-slate-800 text-xs font-bold py-2.5 rounded-lg border border-slate-200 transition">
-                        Launch Worker Demo Dashboard →
-                    </button>
+                    <h4 class="font-bold text-slate-900 text-base mb-2">Manpower Supply</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">Instant deployment of Skilled, Semi-Skilled & Unskilled staff for factory operations.</p>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-red-50 text-brandRed rounded-xl flex items-center justify-center mb-4 text-xl">
+                <div class="bg-white p-6 rounded-xl border border-slate-200 hover:border-brandRed transition shadow-sm hover:shadow-md">
+                    <div class="w-12 h-12 bg-red-50 text-brandRed rounded-xl flex items-center justify-center mb-4 text-xl border border-red-100">
                         <i class="fa-solid fa-industry"></i>
                     </div>
-                    <h3 class="font-bold text-slate-900 text-lg mb-1">Client / Factory Desk</h3>
-                    <p class="text-slate-500 text-xs mb-4">Request new shift manpower, view deployed worker count, verify billing hours.</p>
-                    <button onclick="demoLogin('Employer')" class="w-full bg-slate-100 hover:bg-brandRed hover:text-white text-slate-800 text-xs font-bold py-2.5 rounded-lg border border-slate-200 transition">
-                        Launch Client Demo Dashboard →
+                    <h4 class="font-bold text-slate-900 text-base mb-2">Machine Operators</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">CNC/VMC operators, press tool technicians, and line assembly workers.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl border border-slate-200 hover:border-brandRed transition shadow-sm hover:shadow-md">
+                    <div class="w-12 h-12 bg-red-50 text-brandRed rounded-xl flex items-center justify-center mb-4 text-xl border border-red-100">
+                        <i class="fa-solid fa-file-shield"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 text-base mb-2">Verification & KYC</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">Aadhar/PAN verification, background check, and labor law compliance.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl border border-slate-200 hover:border-brandRed transition shadow-sm hover:shadow-md">
+                    <div class="w-12 h-12 bg-red-50 text-brandRed rounded-xl flex items-center justify-center mb-4 text-xl border border-red-100">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 text-base mb-2">Advance & Payroll</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">Transparent system for salary advance requests and daily attendance management.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industry Clients -->
+        <section id="clients" class="py-16 bg-white px-4 border-t border-b border-slate-200">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-10">
+                    <h3 class="text-2xl font-black text-slate-900" id="clientHeader">Our Trusted Industry Partners</h3>
+                    <p class="text-slate-500 text-xs mt-1">Leading companies relying on Pindari Enterprises</p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+                        <div>
+                            <h5 class="font-bold text-slate-900 text-sm">Dankal Tech</h5>
+                            <p class="text-[11px] text-slate-500"><i class="fa-solid fa-user-tie text-brandRed mr-1"></i>Mr. Sachin Dandekar</p>
+                        </div>
+                        <span class="text-xs bg-red-100 text-brandRed font-bold px-2 py-0.5 rounded">Active</span>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+                        <div>
+                            <h5 class="font-bold text-slate-900 text-sm">R K Polymer</h5>
+                            <p class="text-[11px] text-slate-500"><i class="fa-solid fa-user-tie text-brandRed mr-1"></i>Mr. Amol Shah</p>
+                        </div>
+                        <span class="text-xs bg-red-100 text-brandRed font-bold px-2 py-0.5 rounded">Active</span>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+                        <div>
+                            <h5 class="font-bold text-slate-900 text-sm">Kraft Plast Inds</h5>
+                            <p class="text-[11px] text-slate-500"><i class="fa-solid fa-user-tie text-brandRed mr-1"></i>Mr. Sanket Shah</p>
+                        </div>
+                        <span class="text-xs bg-red-100 text-brandRed font-bold px-2 py-0.5 rounded">Active</span>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+                        <div>
+                            <h5 class="font-bold text-slate-900 text-sm">Apex Engineers</h5>
+                            <p class="text-[11px] text-slate-500"><i class="fa-solid fa-user-tie text-brandRed mr-1"></i>Mr. Murti</p>
+                        </div>
+                        <span class="text-xs bg-red-100 text-brandRed font-bold px-2 py-0.5 rounded">Active</span>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+                        <div>
+                            <h5 class="font-bold text-slate-900 text-sm">Suhas Enterprises</h5>
+                            <p class="text-[11px] text-slate-500"><i class="fa-solid fa-user-tie text-brandRed mr-1"></i>Mr. Ganesh Sathe</p>
+                        </div>
+                        <span class="text-xs bg-red-100 text-brandRed font-bold px-2 py-0.5 rounded">Active</span>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+                        <div>
+                            <h5 class="font-bold text-slate-900 text-sm">B N Tools</h5>
+                            <p class="text-[11px] text-slate-500"><i class="fa-solid fa-user-tie text-brandRed mr-1"></i>Mrs. Reshma Patil</p>
+                        </div>
+                        <span class="text-xs bg-red-100 text-brandRed font-bold px-2 py-0.5 rounded">Active</span>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+                        <div>
+                            <h5 class="font-bold text-slate-900 text-sm">Technova</h5>
+                            <p class="text-[11px] text-slate-500"><i class="fa-solid fa-user-tie text-brandRed mr-1"></i>Mr. Jitendra Kelkar</p>
+                        </div>
+                        <span class="text-xs bg-red-100 text-brandRed font-bold px-2 py-0.5 rounded">Active</span>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+                        <div>
+                            <h5 class="font-bold text-slate-900 text-sm">Gennext Mold</h5>
+                            <p class="text-[11px] text-slate-500"><i class="fa-solid fa-user-tie text-brandRed mr-1"></i>Mr. Ramakrishna C.</p>
+                        </div>
+                        <span class="text-xs bg-red-100 text-brandRed font-bold px-2 py-0.5 rounded">Active</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Desk Request Forms -->
+        <section id="portal" class="py-16 px-4 max-w-4xl mx-auto">
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-xl p-6 md:p-8">
+                <div class="border-b border-slate-200 pb-4 mb-6">
+                    <h3 class="text-xl font-bold text-slate-900 flex items-center">
+                        <i class="fa-solid fa-paper-plane text-brandRed mr-2"></i> Quick Service Request Desk
+                    </h3>
+                    <p class="text-slate-500 text-xs mt-1">Submit your request directly to Pindari Enterprises management</p>
+                </div>
+
+                <!-- Form Tabs -->
+                <div class="flex bg-slate-100 p-1 rounded-lg mb-6 max-w-xs border border-slate-200">
+                    <button id="tabWorker" onclick="switchTab('worker')" class="w-1/2 py-2 text-xs font-bold rounded-md transition bg-brandRed text-white">
+                        Worker Desk
+                    </button>
+                    <button id="tabEmployer" onclick="switchTab('employer')" class="w-1/2 py-2 text-xs font-bold rounded-md transition text-slate-600 hover:text-slate-900">
+                        Employer Desk
                     </button>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-red-50 text-brandRed rounded-xl flex items-center justify-center mb-4 text-xl">
-                        <i class="fa-solid fa-sliders"></i>
-                    </div>
-                    <h3 class="font-bold text-slate-900 text-lg mb-1">Admin Central Console</h3>
-                    <p class="text-slate-500 text-xs mb-4">Approve salary advances, assign workers to companies, manage compliance.</p>
-                    <button onclick="demoLogin('Admin')" class="w-full bg-slate-100 hover:bg-brandRed hover:text-white text-slate-800 text-xs font-bold py-2.5 rounded-lg border border-slate-200 transition">
-                        Launch Admin Console →
-                    </button>
+                <!-- Worker Form -->
+                <div id="workerSection">
+                    <form onsubmit="handleFormSubmit(event, 'Worker')" class="space-y-4 text-xs">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-bold text-slate-700 uppercase mb-1">Full Name *</label>
+                                <input type="text" required class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900" placeholder="Enter full name">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-slate-700 uppercase mb-1">Mobile Number *</label>
+                                <input type="tel" required class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900" placeholder="9860XXXXXX">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-bold text-slate-700 uppercase mb-1">Request Type</label>
+                                <select class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900">
+                                    <option>New Worker Registration</option>
+                                    <option>Leave Request (छुट्टी की अर्ज़ी)</option>
+                                    <option>Advance Salary Request (एडवांस सैलरी)</option>
+                                    <option>General Inquiry</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block font-bold text-slate-700 uppercase mb-1">Assigned Factory / Company</label>
+                                <select class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900">
+                                    <option>Not Assigned (New Applicant)</option>
+                                    <option>Dankal Tech</option>
+                                    <option>R K Polymer</option>
+                                    <option>Kraft Plast Inds</option>
+                                    <option>Apex Engineers</option>
+                                    <option>Suhas Enterprises</option>
+                                    <option>B N Tools</option>
+                                    <option>Technova</option>
+                                    <option>Gennext Mold</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-bold text-slate-700 uppercase mb-1">Details / Request Message</label>
+                            <textarea rows="3" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900" placeholder="Write details here..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brandRed hover:bg-brandDarkRed text-white font-bold py-3 rounded-lg shadow transition">
+                            Submit Worker Request
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Employer Form -->
+                <div id="employerSection" class="hidden">
+                    <form onsubmit="handleFormSubmit(event, 'Employer')" class="space-y-4 text-xs">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-bold text-slate-700 uppercase mb-1">Company Name *</label>
+                                <input type="text" required class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900" placeholder="e.g. Acme Components">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-slate-700 uppercase mb-1">Contact Person *</label>
+                                <input type="text" required class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900" placeholder="Name">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-bold text-slate-700 uppercase mb-1">Mobile / Phone *</label>
+                                <input type="tel" required class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900" placeholder="9860XXXXXX">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-slate-700 uppercase mb-1">Manpower Required</label>
+                                <input type="number" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900" placeholder="e.g. 15">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-bold text-slate-700 uppercase mb-1">Skill Requirement Details</label>
+                            <textarea rows="3" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900" placeholder="Specify requirements..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-lg shadow transition">
+                            Submit Hiring Request
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Phase 2 Dynamic Dashboard Screen (Initially Hidden) -->
     <div id="dashboardView" class="hidden min-h-screen bg-slate-100 p-4 md:p-8">
         <div class="max-w-7xl mx-auto">
+            <!-- Top Dashboard Bar -->
             <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
                 <div class="flex items-center space-x-3">
                     <span id="roleBadge" class="bg-brandRed text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Worker</span>
@@ -136,11 +331,12 @@
                 </button>
             </div>
 
-            <div id="dashboardContent" class="space-y-6">
-                </div>
+            <!-- Dynamic Dashboard Content Container -->
+            <div id="dashboardContent" class="space-y-6"></div>
         </div>
     </div>
 
+    <!-- Phase 2 Universal Login Modal -->
     <div id="loginModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
         <div class="bg-white border border-slate-200 w-full max-w-md rounded-2xl p-6 relative shadow-2xl">
             <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-lg">
@@ -153,8 +349,8 @@
                         <text x="50" y="52" text-anchor="middle" dominant-baseline="central" fill="#FFFFFF" font-family="sans-serif" font-weight="900" font-size="28">PE</text>
                     </svg>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900">Portal Authentication</h3>
-                <p class="text-slate-500 text-xs mt-0.5">Enter credentials to log in to Phase 2 console</p>
+                <h3 class="text-xl font-bold text-slate-900">Portal Login</h3>
+                <p class="text-slate-500 text-xs mt-0.5">Enter credentials to access Phase 2 console</p>
             </div>
 
             <form onsubmit="handlePortalLogin(event)" class="space-y-4 text-xs">
@@ -181,25 +377,78 @@
         </div>
     </div>
 
-    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-xs mt-auto">
-        <div class="max-w-7xl mx-auto px-4">
-            <p class="font-bold text-white mb-1">PINDARI ENTERPRISES - PHASE 2 PORTAL SYSTEM</p>
-            <p>Sunrise Towers, Nigdi, Pune | Contact: +91 9860109069</p>
+    <!-- Verified Google Maps Location Footer -->
+    <footer id="contact" class="bg-slate-900 text-slate-300 py-12 mt-auto border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h4 class="text-xl font-black text-white tracking-wider mb-2">PINDARI ENTERPRISES</h4>
+            <p class="text-slate-400 text-xs mb-1">S. No. 15 / 2 / 2, Next to Amrita Vidyalayam High School, Sunrise Towers by Rainbow Housing, Nigdi, Pune, Maharashtra 411044</p>
+            <p class="text-brandRed text-sm font-bold mb-6">Contact / WhatsApp: +91 9860109069</p>
+
+            <!-- Working High Accuracy Google Map Embed -->
+            <div class="max-w-4xl mx-auto rounded-2xl overflow-hidden border-2 border-slate-700 shadow-2xl mb-8">
+                <iframe class="w-full h-64 border-0" src="https://maps.google.com/maps?q=18.6669,73.7745&hl=en&z=16&output=embed" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+
+            <p class="text-slate-500 text-xs">&copy; 2026 Pindari Enterprises. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <!-- Floating WhatsApp Action -->
+    <a href="https://wa.me/919860109069?text=Hello%20Pindari%20Enterprises,%20I%20have%20a%20query." target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-2xl transition-transform hover:scale-110 z-40">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Interactive Script -->
     <script>
+        let isHindi = false;
+
+        function toggleLanguage() {
+            isHindi = !isHindi;
+            document.getElementById('langLabel').innerText = isHindi ? 'English' : 'हिंदी';
+            
+            if (isHindi) {
+                document.getElementById('subHeaderTag').innerText = 'स्टाफिंग एवं औद्योगिक प्लेटफार्म';
+                document.getElementById('heroTitle').innerHTML = 'औद्योगिक मैनपावर प्रबंधन, <br><span class="text-brandRed">आसान और भरोसेमंद</span>';
+                document.getElementById('heroDesc').innerText = 'निगड़ी, भोसरी, चाकन और पीसीएमसी में कुशल, अर्ध-कुशल, अकुशल और मशीन ऑपरेटर मैनपावर सेवाएं।';
+                document.getElementById('clientHeader').innerText = 'हमारे प्रमुख औद्योगिक पार्टनर्स';
+            } else {
+                document.getElementById('subHeaderTag').innerText = 'Staffing & Industrial Platform';
+                document.getElementById('heroTitle').innerHTML = 'Manage & Deploy Industrial Manpower, <br><span class="text-brandRed">All From One Unified Platform</span>';
+                document.getElementById('heroDesc').innerText = 'Providing Skilled, Semi-Skilled, Unskilled, Machine Operators, and Workforce Staffing Solutions across Nigdi, Bhosari, Chakan, and PCMC region.';
+                document.getElementById('clientHeader').innerText = 'Our Trusted Industry Partners';
+            }
+        }
+
+        function switchTab(type) {
+            const wSec = document.getElementById('workerSection');
+            const eSec = document.getElementById('employerSection');
+            const wBtn = document.getElementById('tabWorker');
+            const eBtn = document.getElementById('tabEmployer');
+
+            if (type === 'worker') {
+                wSec.classList.remove('hidden');
+                eSec.classList.add('hidden');
+                wBtn.className = 'w-1/2 py-2 text-xs font-bold rounded-md transition bg-brandRed text-white';
+                eBtn.className = 'w-1/2 py-2 text-xs font-bold rounded-md transition text-slate-600 hover:text-slate-900';
+            } else {
+                eSec.classList.remove('hidden');
+                wSec.classList.add('hidden');
+                eBtn.className = 'w-1/2 py-2 text-xs font-bold rounded-md transition bg-brandRed text-white';
+                wBtn.className = 'w-1/2 py-2 text-xs font-bold rounded-md transition text-slate-600 hover:text-slate-900';
+            }
+        }
+
+        function handleFormSubmit(e, role) {
+            e.preventDefault();
+            alert(role + ' request submitted successfully!');
+        }
+
         function openModal() {
             document.getElementById('loginModal').classList.remove('hidden');
         }
 
         function closeModal() {
             document.getElementById('loginModal').classList.add('hidden');
-        }
-
-        function openRoleLogin(role) {
-            document.getElementById('modalRole').value = role;
-            openModal();
         }
 
         function handlePortalLogin(e) {
@@ -236,14 +485,6 @@
                             <h4 class="text-lg font-bold text-emerald-600 mt-1">₹3,000 Approved</h4>
                         </div>
                     </div>
-
-                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                        <h3 class="font-bold text-slate-900 text-base mb-4"><i class="fa-solid fa-hand-holding-dollar text-brandRed mr-2"></i> Request Salary Advance</h3>
-                        <form onsubmit="alert('Advance request submitted to Admin!'); return false;" class="flex gap-4 max-w-md text-xs">
-                            <input type="number" placeholder="Enter amount (₹)" required class="p-2.5 bg-slate-50 border border-slate-300 rounded-lg flex-grow">
-                            <button type="submit" class="bg-brandRed text-white px-5 py-2.5 rounded-lg font-bold">Submit Request</button>
-                        </form>
-                    </div>
                 `;
             } else if (role === 'Employer') {
                 userTitle.innerText = "Welcome, Dankal Tech (Mr. Sachin Dandekar)";
@@ -261,15 +502,6 @@
                             <span class="text-xs font-bold text-slate-400 uppercase">Active Shift</span>
                             <h4 class="text-2xl font-bold text-brandRed mt-1">Shift A & B</h4>
                         </div>
-                    </div>
-
-                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                        <h3 class="font-bold text-slate-900 text-base mb-4"><i class="fa-solid fa-user-plus text-brandRed mr-2"></i> Request Additional Manpower</h3>
-                        <form onsubmit="alert('Manpower order submitted to Pindari Enterprises!'); return false;" class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-                            <input type="text" placeholder="Worker Skill Type (e.g. CNC)" required class="p-2.5 bg-slate-50 border border-slate-300 rounded-lg">
-                            <input type="number" placeholder="Required Quantity" required class="p-2.5 bg-slate-50 border border-slate-300 rounded-lg">
-                            <button type="submit" class="bg-slate-900 text-white px-5 py-2.5 rounded-lg font-bold">Order Workforce</button>
-                        </form>
                     </div>
                 `;
             } else if (role === 'Admin') {
@@ -292,25 +524,6 @@
                             <span class="text-xs font-bold text-slate-400 uppercase">Monthly Payroll Status</span>
                             <h4 class="text-xl font-bold text-emerald-600 mt-1">On Track</h4>
                         </div>
-                    </div>
-
-                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
-                        <h3 class="font-bold text-slate-900 text-base mb-4">Live Factory Allocation Console</h3>
-                        <table class="w-full text-xs text-left text-slate-600">
-                            <thead class="bg-slate-100 uppercase text-slate-700">
-                                <tr>
-                                    <th class="p-3">Company Name</th>
-                                    <th class="p-3">Contact Person</th>
-                                    <th class="p-3">Allocated Manpower</th>
-                                    <th class="p-3">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-200">
-                                <tr><td class="p-3 font-bold text-slate-900">Dankal Tech</td><td class="p-3">Sachin Dandekar</td><td class="p-3">32 Staff</td><td class="p-3 text-emerald-600 font-bold">Active</td></tr>
-                                <tr><td class="p-3 font-bold text-slate-900">R K Polymer</td><td class="p-3">Amol Shah</td><td class="p-3">28 Staff</td><td class="p-3 text-emerald-600 font-bold">Active</td></tr>
-                                <tr><td class="p-3 font-bold text-slate-900">Kraft Plast Inds</td><td class="p-3">Sanket Shah</td><td class="p-3">45 Staff</td><td class="p-3 text-emerald-600 font-bold">Active</td></tr>
-                            </tbody>
-                        </table>
                     </div>
                 `;
             }
