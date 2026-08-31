@@ -13,8 +13,8 @@
             theme: {
                 extend: {
                     colors: {
-                        peRed: '#DC2626',
-                        peDarkRed: '#991B1B',
+                        peRed: '#EF4444',
+                        peDarkRed: '#B91C1C',
                         peDarkBg: '#0f172a',
                         peCardBg: '#1e293b'
                     }
@@ -22,33 +22,26 @@
             }
         }
     </script>
-    <style>
-        .active-tab {
-            border-bottom: 3px solid #DC2626;
-            color: #DC2626 !important;
-            font-weight: 700;
-        }
-    </style>
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans flex flex-col min-h-screen">
 
-<header class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
+    <!-- Top Enterprise Navigation Bar -->
+    <header class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             
+            <!-- Ultra-Bright Clean Logo & Brand Name -->
             <div class="flex items-center space-x-3">
-                <div class="relative w-11 h-11 bg-white rounded-xl p-1 shadow-md flex items-center justify-center border border-slate-200">
-                    <svg viewBox="0 0 100 100" class="w-full h-full">
-                        <path d="M45,10 C46,12 48,12 50,11 C52,10 54,12 55,14 C56,16 54,18 57,20 C60,22 62,21 65,22 C68,23 70,26 73,26 C76,26 80,24 82,27 C84,30 81,33 85,34 C89,35 93,37 95,40 C97,43 92,46 90,48 C88,50 83,49 80,51 C77,53 74,56 72,58 C70,60 67,58 65,60 C63,62 61,65 59,68 C57,71 54,75 52,79 C50,83 48,87 46,90 C44,87 43,83 41,78 C39,73 35,68 33,63 C31,58 27,55 24,52 C21,49 18,48 15,45 C12,42 9,39 6,36 C3,33 8,30 11,28 C14,26 18,25 21,23 C24,21 28,19 31,17 C34,15 38,13 41,11 Z" fill="#DC2626"/>
-                        <text x="50" y="52" text-anchor="middle" dominant-baseline="central" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="28" letter-spacing="-1">PE</text>
-                    </svg>
+                <!-- Bright White Card Box for Uploaded Logo -->
+                <div class="w-12 h-12 bg-white rounded-xl p-1 shadow-lg border-2 border-red-500 flex items-center justify-center overflow-hidden">
+                    <img src="logo.png" alt="Pindari Enterprises Logo" class="w-full h-full object-contain">
                 </div>
-                
                 <div>
                     <span class="text-lg md:text-xl font-black tracking-wider text-white leading-none block">PINDARI ENTERPRISES</span>
                     <span class="text-xs text-red-500 font-semibold tracking-widest uppercase" id="subHeaderTag">Staffing & Industrial Platform</span>
                 </div>
             </div>
 
+            <!-- Central Nav Links -->
             <nav class="hidden lg:flex space-x-8 text-sm font-medium text-slate-300">
                 <a href="#features" class="hover:text-white transition">Features & Solutions</a>
                 <a href="#clients" class="hover:text-white transition">Industry Clients</a>
@@ -56,6 +49,7 @@
                 <a href="#contact" class="hover:text-white transition">Support & Contact</a>
             </nav>
 
+            <!-- Action Controls (Language + Portal Login) -->
             <div class="flex items-center space-x-3">
                 <button onclick="toggleLanguage()" id="langBtn" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-3 py-2 rounded-md border border-slate-700 flex items-center space-x-1.5 transition">
                     <i class="fa-solid fa-globe text-peRed"></i>
@@ -69,21 +63,17 @@
             </div>
         </div>
     </header>
-            </div>
-        </div>
-    </header>
-                    <span id="loginBtnText">Portal Login</span>
-                </button>
-            </div>
-        </div>
-    </header>
 
-    <!-- Main Hero Banner (Enterprise Console Look) -->
+    <!-- Main Hero Banner (With Integrated Exact Google Maps Link) -->
     <section class="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-16 px-4 border-b border-slate-800">
         <div class="max-w-6xl mx-auto text-center">
-            <span class="bg-red-950/80 text-peRed text-xs font-bold px-3.5 py-1.5 rounded-full uppercase border border-red-800 tracking-wider inline-block mb-4">
-                <i class="fa-solid fa-location-dot mr-1"></i> Sunrise Tower, Nigdi, Pune
-            </span>
+            
+            <!-- Direct Integrated Exact Google Maps Location Button -->
+            <a href="https://maps.google.com/?q=Sunrise+Towers+by+Rainbow+Housing,+S.+No.+15/2/2,+next+to+Amrita+Vidyalayam+High+School,+Nigdi,+Pune,+Maharashtra+411044" target="_blank" class="bg-red-950/90 hover:bg-red-900 text-red-400 hover:text-white text-xs font-bold px-4 py-2 rounded-full uppercase border border-red-700 tracking-wider inline-flex items-center space-x-2 mb-6 transition shadow-md">
+                <i class="fa-solid fa-location-dot text-peRed"></i>
+                <span>Sunrise Towers, Next to Amrita Vidyalayam, Nigdi, Pune (Open Map ↗)</span>
+            </a>
+            
             <h1 class="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight mb-4" id="heroTitle">
                 Manage & Deploy Industrial Manpower, <br><span class="text-peRed">All From One Unified Platform</span>
             </h1>
@@ -101,7 +91,7 @@
         </div>
     </section>
 
-    <!-- Console Feature Modules Grid (Enterprise Enterprise Central Style) -->
+    <!-- Console Feature Modules Grid -->
     <section id="features" class="py-16 px-4 max-w-7xl mx-auto">
         <div class="text-center mb-12">
             <h2 class="text-xs font-bold text-peRed uppercase tracking-widest mb-1">Platform Solutions</h2>
@@ -110,7 +100,6 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Feature Card 1 -->
             <div class="bg-peCardBg p-5 rounded-xl border border-slate-800 hover:border-peRed/50 transition shadow-md">
                 <div class="w-10 h-10 bg-red-950/60 text-peRed rounded-lg flex items-center justify-center mb-4 text-lg border border-red-900/40">
                     <i class="fa-solid fa-users-gear"></i>
@@ -119,7 +108,6 @@
                 <p class="text-slate-400 text-xs leading-relaxed">Automated onboarding and instant deployment of Skilled, Semi-Skilled & Unskilled staff for industrial shifts.</p>
             </div>
 
-            <!-- Feature Card 2 -->
             <div class="bg-peCardBg p-5 rounded-xl border border-slate-800 hover:border-peRed/50 transition shadow-md">
                 <div class="w-10 h-10 bg-red-950/60 text-peRed rounded-lg flex items-center justify-center mb-4 text-lg border border-red-900/40">
                     <i class="fa-solid fa-industry"></i>
@@ -128,7 +116,6 @@
                 <p class="text-slate-400 text-xs leading-relaxed">Certified CNC/VMC operators, press tool technicians, and quality check inspectors ready for factory floors.</p>
             </div>
 
-            <!-- Feature Card 3 -->
             <div class="bg-peCardBg p-5 rounded-xl border border-slate-800 hover:border-peRed/50 transition shadow-md">
                 <div class="w-10 h-10 bg-red-950/60 text-peRed rounded-lg flex items-center justify-center mb-4 text-lg border border-red-900/40">
                     <i class="fa-solid fa-file-shield"></i>
@@ -137,7 +124,6 @@
                 <p class="text-slate-400 text-xs leading-relaxed">Centralized KYC verification, Aadhar/PAN document management, and labor regulatory audit compliance.</p>
             </div>
 
-            <!-- Feature Card 4 -->
             <div class="bg-peCardBg p-5 rounded-xl border border-slate-800 hover:border-peRed/50 transition shadow-md">
                 <div class="w-10 h-10 bg-red-950/60 text-peRed rounded-lg flex items-center justify-center mb-4 text-lg border border-red-900/40">
                     <i class="fa-solid fa-hand-holding-dollar"></i>
@@ -148,7 +134,7 @@
         </div>
     </section>
 
-    <!-- Esteemed Corporate Clients Grid -->
+    <!-- Corporate Clients Grid -->
     <section id="clients" class="py-16 bg-slate-950 px-4 border-t border-b border-slate-800">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-10">
@@ -279,7 +265,6 @@
                         </div>
                     </div>
 
-                    <!-- File Upload Box -->
                     <div class="border border-dashed border-slate-700 p-4 rounded-lg text-center bg-slate-900/50">
                         <i class="fa-solid fa-cloud-arrow-up text-peRed text-xl mb-1"></i>
                         <label class="block font-bold text-slate-300 cursor-pointer">
@@ -337,15 +322,15 @@
         </div>
     </section>
 
-    <!-- Modal Dialog for Portal Login (Where you can build your portal later) -->
+    <!-- Modal Dialog for Portal Login -->
     <div id="loginModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
         <div class="bg-peCardBg border border-slate-700 w-full max-w-md rounded-xl p-6 relative shadow-2xl">
             <button onclick="closePortalModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div class="text-center mb-6">
-                <div class="w-12 h-12 bg-peRed rounded-lg mx-auto flex items-center justify-center text-white font-black text-xl mb-3 shadow-md">
-                    PE
+                <div class="w-12 h-12 bg-white rounded-xl mx-auto p-1 shadow-md mb-3 flex items-center justify-center border border-red-500">
+                    <img src="logo.png" alt="PE Logo" class="w-full h-full object-contain">
                 </div>
                 <h3 class="text-xl font-bold text-white">Central Portal Login</h3>
                 <p class="text-slate-400 text-xs mt-1">Access Admin Dashboard or Client/Worker Accounts</p>
@@ -375,11 +360,18 @@
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Footer Section with Interactive Google Map Embed -->
     <footer id="contact" class="bg-slate-950 border-t border-slate-800 py-10 mt-auto">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <h4 class="text-lg font-black tracking-wider text-white mb-1">PINDARI ENTERPRISES</h4>
-            <p class="text-slate-400 text-xs mb-3">Sunrise Tower, Nigdi, Pune - 411044 | Contact: +91 9860109069</p>
+            <p class="text-slate-300 text-xs mb-2">Sunrise Towers by Rainbow Housing, S. No. 15/2/2, Next to Amrita Vidyalayam High School, Nigdi, Pune - 411044</p>
+            <p class="text-red-400 text-xs font-bold mb-6">Contact: +91 9860109069</p>
+
+            <!-- Embedded Live Google Map -->
+            <div class="max-w-3xl mx-auto rounded-xl overflow-hidden border border-slate-800 shadow-xl mb-6">
+                <iframe class="w-full h-56 border-0" src="https://maps.google.com/maps?q=Sunrise+Towers+by+Rainbow+Housing,+Nigdi,+Pune&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+
             <p class="text-slate-600 text-xs">&copy; 2026 Pindari Enterprises. Enterprise SaaS Dashboard Edition.</p>
         </div>
     </footer>
