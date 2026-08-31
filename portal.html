@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pindari Enterprises | Portal Console</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandRed: '#DC2626',
+                        brandDarkRed: '#991B1B',
+                        brandDark: '#0F172A',
+                        brandGray: '#F8FAFC'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col justify-center items-center p-4">
+
+    <!-- Back to Main Website Header Button -->
+    <div class="fixed top-4 left-4">
+        <a href="index.html" class="bg-white hover:bg-slate-200 text-slate-700 font-bold text-xs px-4 py-2 rounded-lg border border-slate-300 shadow flex items-center space-x-2 transition">
+            <i class="fa-solid fa-arrow-left text-brandRed"></i>
+            <span>Back to Website</span>
+        </a>
+    </div>
+
+    <!-- Login Form Card -->
+    <div id="loginCard" class="bg-white border border-slate-200 w-full max-w-md rounded-2xl p-6 relative shadow-2xl">
+        <div class="text-center mb-6">
+            <div class="w-12 h-12 bg-white rounded-xl mx-auto p-1 shadow-md mb-2 border border-brandRed flex items-center justify-center">
+                <svg viewBox="0 0 100 100" class="w-full h-full">
+                    <path d="M45,10 C46,12 48,12 50,11 C52,10 54,12 55,14 C56,16 54,18 57,20 C60,22 62,21 65,22 C68,23 70,26 73,26 C76,26 80,24 82,27 C84,30 81,33 85,34 C89,35 93,37 95,40 C97,43 92,46 90,48 C88,50 83,49 80,51 C77,53 74,56 72,58 C70,60 67,58 65,60 C63,62 61,65 59,68 C57,71 54,75 52,79 C50,83 48,87 46,90 C44,87 43,83 41,78 C39,73 35,68 33,63 C31,58 27,55 24,52 C21,49 18,48 15,45 C12,42 9,39 6,36 C3,33 8,30 11,28 C14,26 18,25 21,23 C24,21 28,19 31,17 C34,15 38,13 41,11 Z" fill="#DC2626"/>
+                    <text x="50" y="52" text-anchor="middle" dominant-baseline="central" fill="#FFFFFF" font-family="sans-serif" font-weight="900" font-size="28">PE</text>
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">Pindari Portal Login</h3>
+            <p class="text-slate-500 text-xs mt-0.5">Select your role to view dashboard</p>
+        </div>
+
+        <form onsubmit="handlePortalLogin(event)" class="space-y-4 text-xs">
+            <div>
+                <label class="block font-bold text-slate-700 uppercase mb-1">Select Role</label>
+                <select id="modalRole" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg text-slate-900 outline-none focus:border-brandRed">
+                    <option value="Worker">Worker Portal</option>
+                    <option value="Employer">Employer / Client Portal</option>
+                    <option value="Admin">Admin Console</option>
+                </select>
+            </div>
+            <div>
+                <label class="block font-bold text-slate-700 uppercase mb-1">Mobile / User ID</label>
+                <input type="text" id="userIdInput" required class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg text-slate-900 outline-none focus:border-brandRed" placeholder="Enter Mobile Number or ID">
+            </div>
+            <div>
+                <label class="block font-bold text-slate-700 uppercase mb-1">Password / Security PIN</label>
+                <input type="password" required class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg text-slate-900 outline-none focus:border-brandRed" placeholder="••••••••">
+            </div>
+            <button type="submit" class="w-full bg-brandRed hover:bg-brandDarkRed text-white font-bold py-3 rounded-lg shadow transition">
+                Access Portal Console
+            </button>
+        </form>
+    </div>
+
+    <!-- Active Dashboard Screen (Initially Hidden) -->
+    <div id="dashboardView" class="hidden w-full max-w-6xl">
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+            <div class="flex items-center space-x-3">
+                <span id="roleBadge" class="bg-brandRed text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Worker</span>
+                <div>
+                    <h2 class="font-bold text-slate-900 text-base" id="userTitle">Welcome, Active User</h2>
+                    <p class="text-slate-500 text-xs">Pindari Enterprises Portal Console</p>
+                </div>
+            </div>
+            <button onclick="logout()" class="bg-slate-100 hover:bg-red-50 text-slate-700 hover:text-brandRed text-xs font-bold px-4 py-2 rounded-lg border border-slate-300 transition">
+                <i class="fa-solid fa-right-from-bracket mr-1"></i> Logout
+            </button>
+        </div>
+
+        <div id="dashboardContent" class="space-y-6"></div>
+    </div>
+
+    <script>
+        function handlePortalLogin(e) {
+            e.preventDefault();
+            const role = document.getElementById('modalRole').value;
+            
+            document.getElementById('loginCard').classList.add('hidden');
+            document.getElementById('dashboardView').classList.remove('hidden');
+            
+            const roleBadge = document.getElementById('roleBadge');
+            const userTitle = document.getElementById('userTitle');
+            const content = document.getElementById('dashboardContent');
+
+            roleBadge.innerText = role + ' Dashboard';
+            
+            if (role === 'Worker') {
+                userTitle.innerText = "Welcome, Ramesh Shinde (Machinist)";
+                content.innerHTML = `
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="text-xs font-bold text-slate-400 uppercase">Assigned Unit</span>
+                            <h4 class="text-lg font-bold text-slate-900 mt-1">Dankal Tech, Nigdi</h4>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="text-xs font-bold text-slate-400 uppercase">Days Worked (This Month)</span>
+                            <h4 class="text-lg font-bold text-brandRed mt-1">24 Days Present</h4>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="text-xs font-bold text-slate-400 uppercase">Advance Request Status</span>
+                            <h4 class="text-lg font-bold text-emerald-600 mt-1">₹3,000 Approved</h4>
+                        </div>
+                    </div>
+                `;
+            } else if (role === 'Employer') {
+                userTitle.innerText = "Welcome, Dankal Tech (Mr. Sachin Dandekar)";
+                content.innerHTML = `
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="text-xs font-bold text-slate-400 uppercase">Deployed Manpower</span>
+                            <h4 class="text-2xl font-bold text-slate-900 mt-1">32 Workers Active</h4>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="text-xs font-bold text-slate-400 uppercase">Current Shift Compliance</span>
+                            <h4 class="text-2xl font-bold text-emerald-600 mt-1">100% Verified</h4>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="text-xs font-bold text-slate-400 uppercase">Active Shift</span>
+                            <h4 class="text-2xl font-bold text-brandRed mt-1">Shift A & B</h4>
+                        </div>
+                    </div>
+                `;
+            } else if (role === 'Admin') {
+                userTitle.innerText = "Welcome, System Administrator (Pindari Management)";
+                content.innerHTML = `
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="text-xs font-bold text-slate-400 uppercase">Total Workers Onfield</span>
+                            <h4 class="text-xl font-bold text-slate-900 mt-1">240 Workers</h4>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="text-xs font-bold text-slate-400 uppercase">Active Factory Clients</span>
+                            <h4 class="text-xl font-bold text-brandRed mt-1">8 Companies</h4>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="text-xs font-bold text-slate-400 uppercase">Pending Advance Requests</span>
+                            <h4 class="text-xl font-bold text-amber-600 mt-1">5 Pending</h4>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="text-xs font-bold text-slate-400 uppercase">Monthly Payroll Status</span>
+                            <h4 class="text-xl font-bold text-emerald-600 mt-1">On Track</h4>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function logout() {
+            document.getElementById('dashboardView').classList.add('hidden');
+            document.getElementById('loginCard').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
