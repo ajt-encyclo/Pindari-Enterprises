@@ -25,7 +25,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
 
-    <!-- Modern Navigation Header -->
+    <!-- Header Navigation -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             
@@ -51,22 +51,22 @@
                 <a href="#contact" class="hover:text-brandRed transition">Contact Us</a>
             </nav>
 
-            <!-- Language & Portal Login -->
+            <!-- Language & Portal Login Link -->
             <div class="flex items-center space-x-3">
                 <button onclick="toggleLanguage()" id="langBtn" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-3 py-2 rounded-lg border border-slate-300 flex items-center space-x-1.5 transition">
                     <i class="fa-solid fa-globe text-brandRed"></i>
                     <span id="langLabel">हिंदी</span>
                 </button>
-                <button onclick="openModal()" class="bg-brandRed hover:bg-brandDarkRed text-white text-xs font-bold px-4 py-2 rounded-lg shadow transition flex items-center space-x-1.5">
+                <a href="portal.html" class="bg-brandRed hover:bg-brandDarkRed text-white text-xs font-bold px-4 py-2 rounded-lg shadow transition flex items-center space-x-1.5">
                     <i class="fa-solid fa-right-to-bracket"></i>
                     <span>Portal Login</span>
-                </button>
+                </a>
             </div>
         </div>
     </header>
 
-    <!-- Main Website View (Default Visible Screen) -->
-    <main id="publicView">
+    <!-- Main Website View -->
+    <main>
         <!-- Hero Section -->
         <section class="bg-white py-16 px-4 border-b border-slate-200">
             <div class="max-w-5xl mx-auto text-center">
@@ -83,7 +83,7 @@
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
                     <a href="#portal" onclick="switchTab('worker')" class="bg-brandRed hover:bg-brandDarkRed text-white font-bold px-6 py-3 rounded-lg shadow-lg text-sm transition flex items-center justify-center">
-                        <i class="fa-solid fa-user-check mr-2"></i> Worker Registration / Portal
+                        <i class="fa-solid fa-user-check mr-2"></i> Worker Registration / Desk
                     </a>
                     <a href="#portal" onclick="switchTab('employer')" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3 rounded-lg shadow-lg text-sm transition flex items-center justify-center">
                         <i class="fa-solid fa-building-user mr-2"></i> Client Hiring Desk
@@ -314,77 +314,13 @@
         </section>
     </main>
 
-    <!-- Phase 2 Dynamic Dashboard Screen (Initially Hidden) -->
-    <div id="dashboardView" class="hidden min-h-screen bg-slate-100 p-4 md:p-8">
-        <div class="max-w-7xl mx-auto">
-            <!-- Top Dashboard Bar -->
-            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-                <div class="flex items-center space-x-3">
-                    <span id="roleBadge" class="bg-brandRed text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Worker</span>
-                    <div>
-                        <h2 class="font-bold text-slate-900 text-base" id="userTitle">Welcome, Active User</h2>
-                        <p class="text-slate-500 text-xs">Pindari Enterprises Phase 2 Portal Console</p>
-                    </div>
-                </div>
-                <button onclick="logout()" class="bg-slate-100 hover:bg-red-50 text-slate-700 hover:text-brandRed text-xs font-bold px-4 py-2 rounded-lg border border-slate-300 transition">
-                    <i class="fa-solid fa-right-from-bracket mr-1"></i> Exit Dashboard
-                </button>
-            </div>
-
-            <!-- Dynamic Dashboard Content Container -->
-            <div id="dashboardContent" class="space-y-6"></div>
-        </div>
-    </div>
-
-    <!-- Phase 2 Universal Login Modal -->
-    <div id="loginModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
-        <div class="bg-white border border-slate-200 w-full max-w-md rounded-2xl p-6 relative shadow-2xl">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div class="text-center mb-6">
-                <div class="w-12 h-12 bg-white rounded-xl mx-auto p-1 shadow-md mb-2 border border-brandRed flex items-center justify-center">
-                    <svg viewBox="0 0 100 100" class="w-full h-full">
-                        <path d="M45,10 C46,12 48,12 50,11 C52,10 54,12 55,14 C56,16 54,18 57,20 C60,22 62,21 65,22 C68,23 70,26 73,26 C76,26 80,24 82,27 C84,30 81,33 85,34 C89,35 93,37 95,40 C97,43 92,46 90,48 C88,50 83,49 80,51 C77,53 74,56 72,58 C70,60 67,58 65,60 C63,62 61,65 59,68 C57,71 54,75 52,79 C50,83 48,87 46,90 C44,87 43,83 41,78 C39,73 35,68 33,63 C31,58 27,55 24,52 C21,49 18,48 15,45 C12,42 9,39 6,36 C3,33 8,30 11,28 C14,26 18,25 21,23 C24,21 28,19 31,17 C34,15 38,13 41,11 Z" fill="#DC2626"/>
-                        <text x="50" y="52" text-anchor="middle" dominant-baseline="central" fill="#FFFFFF" font-family="sans-serif" font-weight="900" font-size="28">PE</text>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-slate-900">Portal Login</h3>
-                <p class="text-slate-500 text-xs mt-0.5">Enter credentials to access Phase 2 console</p>
-            </div>
-
-            <form onsubmit="handlePortalLogin(event)" class="space-y-4 text-xs">
-                <div>
-                    <label class="block font-bold text-slate-700 uppercase mb-1">Select Role</label>
-                    <select id="modalRole" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg text-slate-900 outline-none focus:border-brandRed">
-                        <option value="Worker">Worker Portal</option>
-                        <option value="Employer">Employer / Client Portal</option>
-                        <option value="Admin">Admin Console</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block font-bold text-slate-700 uppercase mb-1">Mobile / User ID</label>
-                    <input type="text" id="userIdInput" required class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg text-slate-900 outline-none focus:border-brandRed" placeholder="Enter Mobile Number or ID">
-                </div>
-                <div>
-                    <label class="block font-bold text-slate-700 uppercase mb-1">Password / Security PIN</label>
-                    <input type="password" required class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg text-slate-900 outline-none focus:border-brandRed" placeholder="••••••••">
-                </div>
-                <button type="submit" class="w-full bg-brandRed hover:bg-brandDarkRed text-white font-bold py-3 rounded-lg shadow transition">
-                    Access Portal Console
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Verified Google Maps Location Footer -->
+    <!-- Footer -->
     <footer id="contact" class="bg-slate-900 text-slate-300 py-12 mt-auto border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <h4 class="text-xl font-black text-white tracking-wider mb-2">PINDARI ENTERPRISES</h4>
             <p class="text-slate-400 text-xs mb-1">S. No. 15 / 2 / 2, Next to Amrita Vidyalayam High School, Sunrise Towers by Rainbow Housing, Nigdi, Pune, Maharashtra 411044</p>
             <p class="text-brandRed text-sm font-bold mb-6">Contact / WhatsApp: +91 9860109069</p>
 
-            <!-- Working High Accuracy Google Map Embed -->
             <div class="max-w-4xl mx-auto rounded-2xl overflow-hidden border-2 border-slate-700 shadow-2xl mb-8">
                 <iframe class="w-full h-64 border-0" src="https://maps.google.com/maps?q=18.6669,73.7745&hl=en&z=16&output=embed" allowfullscreen="" loading="lazy"></iframe>
             </div>
@@ -393,12 +329,11 @@
         </div>
     </footer>
 
-    <!-- Floating WhatsApp Action -->
+    <!-- Floating WhatsApp -->
     <a href="https://wa.me/919860109069?text=Hello%20Pindari%20Enterprises,%20I%20have%20a%20query." target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-2xl transition-transform hover:scale-110 z-40">
         <i class="fa-brands fa-whatsapp text-2xl"></i>
     </a>
 
-    <!-- Interactive Script -->
     <script>
         let isHindi = false;
 
@@ -441,97 +376,6 @@
         function handleFormSubmit(e, role) {
             e.preventDefault();
             alert(role + ' request submitted successfully!');
-        }
-
-        function openModal() {
-            document.getElementById('loginModal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('loginModal').classList.add('hidden');
-        }
-
-        function handlePortalLogin(e) {
-            e.preventDefault();
-            const role = document.getElementById('modalRole').value;
-            closeModal();
-            demoLogin(role);
-        }
-
-        function demoLogin(role) {
-            document.getElementById('publicView').classList.add('hidden');
-            document.getElementById('dashboardView').classList.remove('hidden');
-            
-            const roleBadge = document.getElementById('roleBadge');
-            const userTitle = document.getElementById('userTitle');
-            const content = document.getElementById('dashboardContent');
-
-            roleBadge.innerText = role + ' Dashboard';
-            
-            if (role === 'Worker') {
-                userTitle.innerText = "Welcome, Ramesh Shinde (Machinist)";
-                content.innerHTML = `
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                            <span class="text-xs font-bold text-slate-400 uppercase">Assigned Unit</span>
-                            <h4 class="text-lg font-bold text-slate-900 mt-1">Dankal Tech, Nigdi</h4>
-                        </div>
-                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                            <span class="text-xs font-bold text-slate-400 uppercase">Days Worked (This Month)</span>
-                            <h4 class="text-lg font-bold text-brandRed mt-1">24 Days Present</h4>
-                        </div>
-                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                            <span class="text-xs font-bold text-slate-400 uppercase">Advance Request Status</span>
-                            <h4 class="text-lg font-bold text-emerald-600 mt-1">₹3,000 Approved</h4>
-                        </div>
-                    </div>
-                `;
-            } else if (role === 'Employer') {
-                userTitle.innerText = "Welcome, Dankal Tech (Mr. Sachin Dandekar)";
-                content.innerHTML = `
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                            <span class="text-xs font-bold text-slate-400 uppercase">Deployed Manpower</span>
-                            <h4 class="text-2xl font-bold text-slate-900 mt-1">32 Workers Active</h4>
-                        </div>
-                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                            <span class="text-xs font-bold text-slate-400 uppercase">Current Shift Compliance</span>
-                            <h4 class="text-2xl font-bold text-emerald-600 mt-1">100% Verified</h4>
-                        </div>
-                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                            <span class="text-xs font-bold text-slate-400 uppercase">Active Shift</span>
-                            <h4 class="text-2xl font-bold text-brandRed mt-1">Shift A & B</h4>
-                        </div>
-                    </div>
-                `;
-            } else if (role === 'Admin') {
-                userTitle.innerText = "Welcome, System Administrator (Pindari Management)";
-                content.innerHTML = `
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                            <span class="text-xs font-bold text-slate-400 uppercase">Total Workers Onfield</span>
-                            <h4 class="text-xl font-bold text-slate-900 mt-1">240 Workers</h4>
-                        </div>
-                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                            <span class="text-xs font-bold text-slate-400 uppercase">Active Factory Clients</span>
-                            <h4 class="text-xl font-bold text-brandRed mt-1">8 Companies</h4>
-                        </div>
-                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                            <span class="text-xs font-bold text-slate-400 uppercase">Pending Advance Requests</span>
-                            <h4 class="text-xl font-bold text-amber-600 mt-1">5 Pending</h4>
-                        </div>
-                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                            <span class="text-xs font-bold text-slate-400 uppercase">Monthly Payroll Status</span>
-                            <h4 class="text-xl font-bold text-emerald-600 mt-1">On Track</h4>
-                        </div>
-                    </div>
-                `;
-            }
-        }
-
-        function logout() {
-            document.getElementById('dashboardView').classList.add('hidden');
-            document.getElementById('publicView').classList.remove('hidden');
         }
     </script>
 </body>
