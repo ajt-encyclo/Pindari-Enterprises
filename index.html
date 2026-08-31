@@ -3,516 +3,464 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pindari Enterprises | Staffing & Industrial Platform</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
+    <title>PINDARI ENTERPRISES - Trusted Manpower Supply Partner</title>
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brandRed: '#DC2626',
-                        brandDarkRed: '#991B1B',
-                        brandDark: '#0F172A',
-                        brandGray: '#F8FAFC'
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
+        :root {
+            --primary-navy: #0B192C;
+            --secondary-navy: #1E293B;
+            --accent-orange: #FF6B00;
+            --accent-orange-hover: #E05D00;
+            --whatsapp-green: #25D366;
+            --light-bg: #F8FAFC;
+            --text-dark: #0F172A;
+            --text-muted: #64748B;
         }
-        .animate-marquee {
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #FFFFFF;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Top Bar (Live Time & Language) */
+        .top-bar {
+            background-color: var(--primary-navy);
+            color: #FFFFFF;
+            padding: 8px 5%;
             display: flex;
-            width: 200%;
-            animation: marquee 25s linear infinite;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
         }
-        .animate-marquee:hover {
-            animation-play-state: paused;
+
+        .top-info span {
+            margin-right: 15px;
+        }
+
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .lang-switch button {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #FFF;
+            padding: 2px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: 0.3s;
+        }
+
+        .lang-switch button.active, .lang-switch button:hover {
+            background-color: var(--accent-orange);
+            border-color: var(--accent-orange);
+        }
+
+        /* Header / Navbar */
+        header {
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 12px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-container img {
+            height: 48px;
+            width: auto;
+        }
+
+        .brand-title h1 {
+            font-size: 1.25rem;
+            color: var(--primary-navy);
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .brand-title p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--secondary-navy);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-orange);
+        }
+
+        .btn-header-wa {
+            background-color: var(--whatsapp-green);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        .btn-header-wa:hover {
+            background-color: #1eb954;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(11, 25, 44, 0.9), rgba(11, 25, 44, 0.9)), 
+                        url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1470') center/cover no-repeat;
+            color: #FFFFFF;
+            padding: 90px 5% 80px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #CBD5E1;
+            margin-bottom: 35px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-orange);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-orange-hover);
+        }
+
+        .btn-secondary {
+            background-color: #FFFFFF;
+            color: var(--primary-navy);
+            padding: 14px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: #F1F5F9;
+        }
+
+        /* Clients Section */
+        .clients-section {
+            padding: 60px 5%;
+            background-color: var(--light-bg);
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary-navy);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-orange);
+            display: block;
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .client-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .client-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            border-color: var(--accent-orange);
+        }
+
+        .client-card h3 {
+            font-size: 1rem;
+            color: var(--primary-navy);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .client-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Floating WhatsApp Button */
+        .floating-wa {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--whatsapp-green);
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-decoration: none;
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .floating-wa:hover {
+            transform: scale(1.1);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .hero h2 { font-size: 1.8rem; }
+            .hero p { font-size: 0.95rem; }
+            .top-bar { font-size: 0.75rem; flex-direction: column; gap: 5px; text-align: center; }
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
+<body>
 
-    <!-- Top Live Ticker Bar (Live Messages & Real-Time Date/Time) -->
-    <div class="bg-slate-900 text-white border-b border-slate-800 text-xs py-2 px-4 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-            
-            <!-- Live Badge & Scrolling Ticker -->
-            <div class="flex items-center space-x-3 w-full sm:w-auto overflow-hidden">
-                <span class="bg-brandRed text-white text-[10px] font-black uppercase px-2 py-0.5 rounded flex items-center shrink-0 animate-pulse">
-                    <i class="fa-solid fa-circle text-[6px] mr-1.5"></i> LIVE UPDATES
-                </span>
-                
-                <div class="overflow-hidden whitespace-nowrap relative w-full sm:w-[500px] md:w-[650px] lg:w-[800px]">
-                    <div class="animate-marquee text-slate-300 font-medium text-[11px] space-x-8">
-                        <span>⚡ <strong class="text-white">Rahul Verma</strong> joined <strong class="text-red-400">RK Polymer</strong> as CNC Operator (3 days ago)</span>
-                        <span>🔥 <strong class="text-yellow-400">URGENT REQUIREMENT:</strong> 5 CNC Operators required at <strong class="text-white">Dankal Tech, Nigdi</strong></span>
-                        <span>⚡ <strong class="text-white">Amit Kumar</strong> joined <strong class="text-red-400">Kraft Plast Inds</strong> as Helper (1 day ago)</span>
-                        <span>📢 <strong class="text-emerald-400">NEW OPENING:</strong> 8 Machine Operators needed at <strong class="text-white">Apex Engineers</strong></span>
-                        <span>⚡ <strong class="text-white">Suresh Mane</strong> joined <strong class="text-red-400">Technova</strong> as Lathe Operator (5 hours ago)</span>
-                        <!-- Duplicate for seamless loop -->
-                        <span>⚡ <strong class="text-white">Rahul Verma</strong> joined <strong class="text-red-400">RK Polymer</strong> as CNC Operator (3 days ago)</span>
-                        <span>🔥 <strong class="text-yellow-400">URGENT REQUIREMENT:</strong> 5 CNC Operators required at <strong class="text-white">Dankal Tech, Nigdi</strong></span>
-                        <span>⚡ <strong class="text-white">Amit Kumar</strong> joined <strong class="text-red-400">Kraft Plast Inds</strong> as Helper (1 day ago)</span>
-                        <span>📢 <strong class="text-emerald-400">NEW OPENING:</strong> 8 Machine Operators needed at <strong class="text-white">Apex Engineers</strong></span>
-                        <span>⚡ <strong class="text-white">Suresh Mane</strong> joined <strong class="text-red-400">Technova</strong> as Lathe Operator (5 hours ago)</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Live Clock & Date -->
-            <div class="flex items-center space-x-2 text-[11px] text-slate-400 font-mono shrink-0">
-                <i class="fa-regular fa-clock text-brandRed"></i>
-                <span id="liveDateTime">Loading Date & Time...</span>
+    <!-- Top Live Info Bar -->
+    <div class="top-bar">
+        <div class="top-info">
+            <span><i class="fa-regular fa-clock"></i> <span id="live-datetime">Loading Date & Time...</span></span>
+            <span><i class="fa-solid fa-location-dot"></i> Pan India Operations</span>
+        </div>
+        <div class="top-actions">
+            <div class="lang-switch">
+                <button id="btn-en" class="active" onclick="switchLanguage('en')">EN</button>
+                <button id="btn-hi" onclick="switchLanguage('hi')">हिंदी</button>
             </div>
         </div>
     </div>
 
-    <!-- Main Navigation Header -->
-    <header class="bg-white border-b border-slate-200 sticky top-9 z-40 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            
-            <!-- Company Logo & Title -->
-            <div class="flex items-center space-x-3">
-                <div class="w-11 h-11 bg-white rounded-xl p-1 shadow-md border-2 border-brandRed flex items-center justify-center">
-                    <svg viewBox="0 0 100 100" class="w-full h-full">
-                        <path d="M45,10 C46,12 48,12 50,11 C52,10 54,12 55,14 C56,16 54,18 57,20 C60,22 62,21 65,22 C68,23 70,26 73,26 C76,26 80,24 82,27 C84,30 81,33 85,34 C89,35 93,37 95,40 C97,43 92,46 90,48 C88,50 83,49 80,51 C77,53 74,56 72,58 C70,60 67,58 65,60 C63,62 61,65 59,68 C57,71 54,75 52,79 C50,83 48,87 46,90 C44,87 43,83 41,78 C39,73 35,68 33,63 C31,58 27,55 24,52 C21,49 18,48 15,45 C12,42 9,39 6,36 C3,33 8,30 11,28 C14,26 18,25 21,23 C24,21 28,19 31,17 C34,15 38,13 41,11 Z" fill="#DC2626"/>
-                        <text x="50" y="52" text-anchor="middle" dominant-baseline="central" fill="#FFFFFF" font-family="sans-serif" font-weight="900" font-size="28">PE</text>
-                    </svg>
-                </div>
-                <div>
-                    <span class="text-lg md:text-xl font-black tracking-wider text-slate-900 leading-none block">PINDARI ENTERPRISES</span>
-                    <span class="text-xs text-brandRed font-bold tracking-widest uppercase" id="subHeaderTag">Staffing & Industrial Platform</span>
-                </div>
-            </div>
-
-            <!-- Central Nav Links -->
-            <nav class="hidden lg:flex space-x-8 text-sm font-semibold text-slate-600">
-                <a href="#features" class="hover:text-brandRed transition">Features & Solutions</a>
-                <a href="#clients" class="hover:text-brandRed transition">Industry Clients</a>
-                <a href="#reviews" class="hover:text-brandRed transition">Client Reviews</a>
-                <a href="#portal" class="hover:text-brandRed transition">Service Desk</a>
-                <a href="#contact" class="hover:text-brandRed transition">Contact Us</a>
-            </nav>
-
-            <!-- Language & Portal Login Link -->
-            <div class="flex items-center space-x-3">
-                <button onclick="toggleLanguage()" id="langBtn" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-3 py-2 rounded-lg border border-slate-300 flex items-center space-x-1.5 transition">
-                    <i class="fa-solid fa-globe text-brandRed"></i>
-                    <span id="langLabel">हिंदी</span>
-                </button>
-                <a href="portal.html" class="bg-brandRed hover:bg-brandDarkRed text-white text-xs font-bold px-4 py-2 rounded-lg shadow transition flex items-center space-x-1.5">
-                    <i class="fa-solid fa-right-to-bracket"></i>
-                    <span>Portal Login</span>
-                </a>
+    <!-- Main Navigation Bar -->
+    <header>
+        <div class="logo-container">
+            <!-- Replace src with your image path if hosted locally, e.g., 'logo.png' -->
+            <img src="https://i.ibb.co/3kM2kKZ/pe-logo.png" alt="Pindari Enterprises Logo" onerror="this.onerror=null; this.src='WhatsApp Image 2026-08-24 at 10.51.34.jpeg';">
+            <div class="brand-title">
+                <h1>PINDARI ENTERPRISES</h1>
+                <p id="tagline">Trusted Manpower Supply Partner</p>
             </div>
         </div>
+        <nav>
+            <ul>
+                <li><a href="#about" id="nav-about">About Us</a></li>
+                <li><a href="#services" id="nav-services">Services</a></li>
+                <li><a href="#clients" id="nav-clients">Clients</a></li>
+                <li><a href="#apply" id="nav-apply">Apply / Hire</a></li>
+                <li><a href="#contact" id="nav-contact">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="https://wa.me/919876543210?text=Hello%20Pindari%20Enterprises,%20I%20have%20an%20inquiry." target="_blank" class="btn-header-wa">
+            <i class="fa-brands fa-whatsapp"></i> <span id="wa-btn-text">Chat on WhatsApp</span>
+        </a>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section class="bg-white py-16 px-4 border-b border-slate-200">
-            <div class="max-w-5xl mx-auto text-center">
-                <a href="#contact" class="bg-red-50 text-brandRed text-xs font-bold px-4 py-2 rounded-full uppercase border border-red-200 tracking-wider inline-flex items-center space-x-2 mb-6 shadow-sm hover:bg-red-100 transition">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <span>Sunrise Tower, Nigdi, Pune</span>
-                </a>
-                
-                <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-4" id="heroTitle">
-                    Manage & Deploy Industrial Manpower, <br><span class="text-brandRed">All From One Unified Platform</span>
-                </h1>
-                <p class="text-slate-600 text-sm md:text-base max-w-3xl mx-auto mb-8 leading-relaxed" id="heroDesc">
-                    Providing Skilled, Semi-Skilled, Unskilled, Machine Operators, and Workforce Staffing Solutions across Nigdi, Bhosari, Chakan, and PCMC region.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
-                    <a href="#portal" onclick="switchTab('worker')" class="bg-brandRed hover:bg-brandDarkRed text-white font-bold px-6 py-3 rounded-lg shadow-lg text-sm transition flex items-center justify-center">
-                        <i class="fa-solid fa-user-check mr-2"></i> Worker Registration / Desk
-                    </a>
-                    <a href="#portal" onclick="switchTab('employer')" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3 rounded-lg shadow-lg text-sm transition flex items-center justify-center">
-                        <i class="fa-solid fa-building-user mr-2"></i> Client Hiring Desk
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Solutions Grid -->
-        <section id="features" class="py-16 px-4 max-w-7xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-xs font-bold text-brandRed uppercase tracking-widest mb-1">Platform Solutions</h2>
-                <h3 class="text-2xl md:text-3xl font-black text-slate-900" id="featureHead">End-to-End Workforce Management Solutions</h3>
-                <p class="text-slate-500 text-xs md:text-sm mt-1">Comprehensive staffing, deployment, and operational workforce lifecycle control</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-6 rounded-xl border border-slate-200 hover:border-brandRed transition shadow-sm hover:shadow-md">
-                    <div class="w-12 h-12 bg-red-50 text-brandRed rounded-xl flex items-center justify-center mb-4 text-xl border border-red-100">
-                        <i class="fa-solid fa-users-gear"></i>
-                    </div>
-                    <h4 class="font-bold text-slate-900 text-base mb-2">Manpower Supply</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">Instant deployment of Skilled, Semi-Skilled & Unskilled staff for factory operations.</p>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl border border-slate-200 hover:border-brandRed transition shadow-sm hover:shadow-md">
-                    <div class="w-12 h-12 bg-red-50 text-brandRed rounded-xl flex items-center justify-center mb-4 text-xl border border-red-100">
-                        <i class="fa-solid fa-industry"></i>
-                    </div>
-                    <h4 class="font-bold text-slate-900 text-base mb-2">Machine Operators</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">CNC/VMC operators, press tool technicians, and line assembly workers.</p>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl border border-slate-200 hover:border-brandRed transition shadow-sm hover:shadow-md">
-                    <div class="w-12 h-12 bg-red-50 text-brandRed rounded-xl flex items-center justify-center mb-4 text-xl border border-red-100">
-                        <i class="fa-solid fa-file-shield"></i>
-                    </div>
-                    <h4 class="font-bold text-slate-900 text-base mb-2">Verification & KYC</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">Aadhar/PAN verification, background check, and labor law compliance.</p>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl border border-slate-200 hover:border-brandRed transition shadow-sm hover:shadow-md">
-                    <div class="w-12 h-12 bg-red-50 text-brandRed rounded-xl flex items-center justify-center mb-4 text-xl border border-red-100">
-                        <i class="fa-solid fa-hand-holding-dollar"></i>
-                    </div>
-                    <h4 class="font-bold text-slate-900 text-base mb-2">Advance & Payroll</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">Transparent system for salary advance requests and daily attendance management.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Industry Clients -->
-        <section id="clients" class="py-16 bg-white px-4 border-t border-b border-slate-200">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-10">
-                    <h3 class="text-2xl font-black text-slate-900" id="clientHeader">Our Trusted Industry Partners</h3>
-                    <p class="text-slate-500 text-xs mt-1">Leading companies relying on Pindari Enterprises</p>
-                </div>
-
-                <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
-                        <div>
-                            <h5 class="font-bold text-slate-900 text-sm">Dankal Tech</h5>
-                            <p class="text-[11px] text-slate-500"><i class="fa-solid fa-user-tie text-brandRed mr-1"></i>Mr. Sachin Dandekar</p>
-                        </div>
-                        <span class="text-xs bg-red-100 text-brandRed font-bold px-2 py-0.5 rounded">Active</span>
-                    </div>
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
-                        <div>
-                            <h5 class="font-bold text-slate-900 text-sm">RK Polymer</h5>
-                            <p class="text-[11px] text-slate-500"><i class="fa-solid fa-user-tie text-brandRed mr-1"></i>Mr. Amol Shah</p>
-                        </div>
-                        <span class="text-xs bg-red-100 text-brandRed font-bold px-2 py-0.5 rounded">Active</span>
-                    </div>
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
-                        <div>
-                            <h5 class="font-bold text-slate-900 text-sm">Kraft Plast Inds</h5>
-                            <p class="text-[11px] text-slate-500"><i class="fa-solid fa-user-tie text-brandRed mr-1"></i>Mr. Sanket Shah</p>
-                        </div>
-                        <span class="text-xs bg-red-100 text-brandRed font-bold px-2 py-0.5 rounded">Active</span>
-                    </div>
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
-                        <div>
-                            <h5 class="font-bold text-slate-900 text-sm">Apex Engineers</h5>
-                            <p class="text-[11px] text-slate-500"><i class="fa-solid fa-user-tie text-brandRed mr-1"></i>Mr. Murti</p>
-                        </div>
-                        <span class="text-xs bg-red-100 text-brandRed font-bold px-2 py-0.5 rounded">Active</span>
-                    </div>
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
-                        <div>
-                            <h5 class="font-bold text-slate-900 text-sm">Suhas Enterprises</h5>
-                            <p class="text-[11px] text-slate-500"><i class="fa-solid fa-user-tie text-brandRed mr-1"></i>Mr. Ganesh Sathe</p>
-                        </div>
-                        <span class="text-xs bg-red-100 text-brandRed font-bold px-2 py-0.5 rounded">Active</span>
-                    </div>
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
-                        <div>
-                            <h5 class="font-bold text-slate-900 text-sm">B N Tools</h5>
-                            <p class="text-[11px] text-slate-500"><i class="fa-solid fa-user-tie text-brandRed mr-1"></i>Mrs. Reshma Patil</p>
-                        </div>
-                        <span class="text-xs bg-red-100 text-brandRed font-bold px-2 py-0.5 rounded">Active</span>
-                    </div>
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
-                        <div>
-                            <h5 class="font-bold text-slate-900 text-sm">Technova</h5>
-                            <p class="text-[11px] text-slate-500"><i class="fa-solid fa-user-tie text-brandRed mr-1"></i>Mr. Jitendra Kelkar</p>
-                        </div>
-                        <span class="text-xs bg-red-100 text-brandRed font-bold px-2 py-0.5 rounded">Active</span>
-                    </div>
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
-                        <div>
-                            <h5 class="font-bold text-slate-900 text-sm">Gennext Mold</h5>
-                            <p class="text-[11px] text-slate-500"><i class="fa-solid fa-user-tie text-brandRed mr-1"></i>Mr. Ramakrishna C.</p>
-                        </div>
-                        <span class="text-xs bg-red-100 text-brandRed font-bold px-2 py-0.5 rounded">Active</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Bold Client Reviews / Testimonials Section -->
-        <section id="reviews" class="py-16 px-4 max-w-7xl mx-auto">
-            <div class="text-center mb-12">
-                <span class="bg-red-100 text-brandRed font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Verified Reviews</span>
-                <h3 class="text-2xl md:text-3xl font-black text-slate-900 mt-3" id="reviewTitle">WHAT OUR CLIENTS SAY ABOUT US</h3>
-                <p class="text-slate-500 text-xs md:text-sm mt-1">Real feedback from manufacturing unit heads & managers in PCMC</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                
-                <!-- Review 1 -->
-                <div class="bg-white p-6 rounded-2xl border-2 border-slate-200 shadow-lg hover:border-brandRed transition relative flex flex-col justify-between">
-                    <div>
-                        <div class="flex text-amber-400 text-sm mb-3">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-slate-900 text-sm md:text-base font-extrabold leading-snug mb-4">
-                            "PINDARI ENTERPRISES PROVIDED US WITH 15 CNC OPERATORS WITHIN 24 HOURS! EXCELLENT SERVICE & HIGHLY DISCIPLINED WORKFORCE."
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <div>
-                            <h5 class="font-black text-slate-900 text-xs uppercase">Mr. Sachin Dandekar</h5>
-                            <p class="text-[11px] text-brandRed font-bold">Dankal Tech, Nigdi</p>
-                        </div>
-                        <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-brandRed font-bold text-xs">
-                            <i class="fa-solid fa-quote-right"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 2 -->
-                <div class="bg-white p-6 rounded-2xl border-2 border-slate-200 shadow-lg hover:border-brandRed transition relative flex flex-col justify-between">
-                    <div>
-                        <div class="flex text-amber-400 text-sm mb-3">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-slate-900 text-sm md:text-base font-extrabold leading-snug mb-4">
-                            "THE MOST TRANSPARENT PAYROLL AND ADVANCE SYSTEM IN PCMC INDUSTRIAL AREA. OUR PRODUCTION HAS NEVER SUFFERED SINGLE MANPOWER SHORTAGE!"
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <div>
-                            <h5 class="font-black text-slate-900 text-xs uppercase">Mr. Amol Shah</h5>
-                            <p class="text-[11px] text-brandRed font-bold">RK Polymer</p>
-                        </div>
-                        <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-brandRed font-bold text-xs">
-                            <i class="fa-solid fa-quote-right"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 3 -->
-                <div class="bg-white p-6 rounded-2xl border-2 border-slate-200 shadow-lg hover:border-brandRed transition relative flex flex-col justify-between">
-                    <div>
-                        <div class="flex text-amber-400 text-sm mb-3">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-slate-900 text-sm md:text-base font-extrabold leading-snug mb-4">
-                            "ALL WORKERS ARE PROPERLY VERIFIED WITH AADHAR & POLICE RECORD CHECKS. HIGHLY RECOMMENDED FOR RELIABLE INDUSTRIAL STAFFING!"
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <div>
-                            <h5 class="font-black text-slate-900 text-xs uppercase">Mr. Sanket Shah</h5>
-                            <p class="text-[11px] text-brandRed font-bold">Kraft Plast Inds</p>
-                        </div>
-                        <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-brandRed font-bold text-xs">
-                            <i class="fa-solid fa-quote-right"></i>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Service Desk Request Forms -->
-        <section id="portal" class="py-16 px-4 max-w-4xl mx-auto">
-            <div class="bg-white rounded-2xl border border-slate-200 shadow-xl p-6 md:p-8">
-                <div class="border-b border-slate-200 pb-4 mb-6">
-                    <h3 class="text-xl font-bold text-slate-900 flex items-center">
-                        <i class="fa-solid fa-paper-plane text-brandRed mr-2"></i> Quick Service Request Desk
-                    </h3>
-                    <p class="text-slate-500 text-xs mt-1">Submit your request directly to Pindari Enterprises management</p>
-                </div>
-
-                <!-- Form Tabs -->
-                <div class="flex bg-slate-100 p-1 rounded-lg mb-6 max-w-xs border border-slate-200">
-                    <button id="tabWorker" onclick="switchTab('worker')" class="w-1/2 py-2 text-xs font-bold rounded-md transition bg-brandRed text-white">
-                        Worker Desk
-                    </button>
-                    <button id="tabEmployer" onclick="switchTab('employer')" class="w-1/2 py-2 text-xs font-bold rounded-md transition text-slate-600 hover:text-slate-900">
-                        Employer Desk
-                    </button>
-                </div>
-
-                <!-- Worker Form -->
-                <div id="workerSection">
-                    <form onsubmit="handleFormSubmit(event, 'Worker')" class="space-y-4 text-xs">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block font-bold text-slate-700 uppercase mb-1">Full Name *</label>
-                                <input type="text" required class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900" placeholder="Enter full name">
-                            </div>
-                            <div>
-                                <label class="block font-bold text-slate-700 uppercase mb-1">Mobile Number *</label>
-                                <input type="tel" required class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900" placeholder="9860XXXXXX">
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block font-bold text-slate-700 uppercase mb-1">Request Type</label>
-                                <select class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900">
-                                    <option>New Worker Registration</option>
-                                    <option>Leave Request (छुट्टी की अर्ज़ी)</option>
-                                    <option>Advance Salary Request (एडवांस सैलरी)</option>
-                                    <option>General Inquiry</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block font-bold text-slate-700 uppercase mb-1">Assigned Factory / Company</label>
-                                <select class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900">
-                                    <option>Not Assigned (New Applicant)</option>
-                                    <option>Dankal Tech</option>
-                                    <option>RK Polymer</option>
-                                    <option>Kraft Plast Inds</option>
-                                    <option>Apex Engineers</option>
-                                    <option>Suhas Enterprises</option>
-                                    <option>B N Tools</option>
-                                    <option>Technova</option>
-                                    <option>Gennext Mold</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block font-bold text-slate-700 uppercase mb-1">Details / Request Message</label>
-                            <textarea rows="3" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900" placeholder="Write details here..."></textarea>
-                        </div>
-
-                        <button type="submit" class="w-full bg-brandRed hover:bg-brandDarkRed text-white font-bold py-3 rounded-lg shadow transition">
-                            Submit Worker Request
-                        </button>
-                    </form>
-                </div>
-
-                <!-- Employer Form -->
-                <div id="employerSection" class="hidden">
-                    <form onsubmit="handleFormSubmit(event, 'Employer')" class="space-y-4 text-xs">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block font-bold text-slate-700 uppercase mb-1">Company Name *</label>
-                                <input type="text" required class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900" placeholder="e.g. Acme Components">
-                            </div>
-                            <div>
-                                <label class="block font-bold text-slate-700 uppercase mb-1">Contact Person *</label>
-                                <input type="text" required class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900" placeholder="Name">
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block font-bold text-slate-700 uppercase mb-1">Mobile / Phone *</label>
-                                <input type="tel" required class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900" placeholder="9860XXXXXX">
-                            </div>
-                            <div>
-                                <label class="block font-bold text-slate-700 uppercase mb-1">Manpower Required</label>
-                                <input type="number" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900" placeholder="e.g. 15">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block font-bold text-slate-700 uppercase mb-1">Skill Requirement Details</label>
-                            <textarea rows="3" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:border-brandRed outline-none text-slate-900" placeholder="Specify requirements..."></textarea>
-                        </div>
-
-                        <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-lg shadow transition">
-                            Submit Hiring Request
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer id="contact" class="bg-slate-900 text-slate-300 py-12 mt-auto border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h4 class="text-xl font-black text-white tracking-wider mb-2">PINDARI ENTERPRISES</h4>
-            <p class="text-slate-400 text-xs mb-1">S. No. 15 / 2 / 2, Next to Amrita Vidyalayam High School, Sunrise Towers by Rainbow Housing, Nigdi, Pune, Maharashtra 411044</p>
-            <p class="text-brandRed text-sm font-bold mb-6">Contact / WhatsApp: +91 9860109069</p>
-
-            <div class="max-w-4xl mx-auto rounded-2xl overflow-hidden border-2 border-slate-700 shadow-2xl mb-8">
-                <iframe class="w-full h-64 border-0" src="https://maps.google.com/maps?q=18.6669,73.7745&hl=en&z=16&output=embed" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-
-            <p class="text-slate-500 text-xs">&copy; 2026 Pindari Enterprises. All Rights Reserved.</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2 id="hero-title">Reliable Manpower Solutions For Your Business</h2>
+        <p id="hero-desc">Connecting Skilled & Unskilled Workforce with Top Companies across India.</p>
+        <div class="hero-buttons">
+            <a href="#apply" class="btn-primary" id="btn-job">Looking for Job?</a>
+            <a href="#contact" class="btn-secondary" id="btn-hire">Need Manpower?</a>
         </div>
-    </footer>
+    </section>
+
+    <!-- Client Showcase Section -->
+    <section class="clients-section" id="clients">
+        <h2 class="section-title" id="clients-title">Our Esteemed Clients</h2>
+        <div class="clients-grid">
+            <div class="client-card">
+                <h3>DANKAL TECH</h3>
+                <p>Mr. Sachin Dandekar</p>
+            </div>
+            <div class="client-card">
+                <h3>R K POLYMER</h3>
+                <p>Mr. Amol Shah</p>
+            </div>
+            <div class="client-card">
+                <h3>KRAFT PLAST INDS</h3>
+                <p>Mr. Sanket Shah</p>
+            </div>
+            <div class="client-card">
+                <h3>APEX ENGINEERS</h3>
+                <p>Mr. Murti</p>
+            </div>
+            <div class="client-card">
+                <h3>SUHAS ENTERPRISES</h3>
+                <p>Mr. Ganesh Sathe</p>
+            </div>
+            <div class="client-card">
+                <h3>B N TOOLS & COMPONENTS</h3>
+                <p>Mrs. Reshma Patil</p>
+            </div>
+            <div class="client-card">
+                <h3>TECHNOVA</h3>
+                <p>Mr. Jitendra Kelkar</p>
+            </div>
+            <div class="client-card">
+                <h3>GENNEXT MOLD</h3>
+                <p>Mr. Ramakrishna Chilakapati</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/919860109069?text=Hello%20Pindari%20Enterprises,%20I%20have%20a%20query." target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-2xl transition-transform hover:scale-110 z-40">
-        <i class="fa-brands fa-whatsapp text-2xl"></i>
+    <a href="https://wa.me/919876543210?text=Hello%20Pindari%20Enterprises" target="_blank" class="floating-wa">
+        <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <!-- JavaScript for Live Date Time & Multi-Language Switching -->
     <script>
-        let isHindi = false;
-
-        // Live Date & Clock Script
-        function updateClock() {
+        // 1. Live Clock & Date Script
+        function updateDateTime() {
             const now = new Date();
-            const options = { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
-            document.getElementById('liveDateTime').innerText = now.toLocaleString('en-IN', options);
+            const options = { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric',
+                hour: '2-digit', 
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            document.getElementById('live-datetime').textContent = now.toLocaleString('en-US', options);
         }
-        setInterval(updateClock, 1000);
-        updateClock();
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
 
-        function toggleLanguage() {
-            isHindi = !isHindi;
-            document.getElementById('langLabel').innerText = isHindi ? 'English' : 'हिंदी';
-            
-            if (isHindi) {
-                document.getElementById('subHeaderTag').innerText = 'स्टाफिंग एवं औद्योगिक प्लेटफार्म';
-                document.getElementById('heroTitle').innerHTML = 'औद्योगिक मैनपावर प्रबंधन, <br><span class="text-brandRed">आसान और भरोसेमंद</span>';
-                document.getElementById('heroDesc').innerText = 'निगड़ी, भोसरी, चाकन और पीसीएमसी में कुशल, अर्ध-कुशल, अकुशल और मशीन ऑपरेटर मैनपावर सेवाएं।';
-                document.getElementById('clientHeader').innerText = 'हमारे प्रमुख औद्योगिक पार्टनर्स';
-                document.getElementById('reviewTitle').innerText = 'हमारे क्लाइंट्स का भरोसा';
-            } else {
-                document.getElementById('subHeaderTag').innerText = 'Staffing & Industrial Platform';
-                document.getElementById('heroTitle').innerHTML = 'Manage & Deploy Industrial Manpower, <br><span class="text-brandRed">All From One Unified Platform</span>';
-                document.getElementById('heroDesc').innerText = 'Providing Skilled, Semi-Skilled, Unskilled, Machine Operators, and Workforce Staffing Solutions across Nigdi, Bhosari, Chakan, and PCMC region.';
-                document.getElementById('clientHeader').innerText = 'Our Trusted Industry Partners';
-                document.getElementById('reviewTitle').innerText = 'WHAT OUR CLIENTS SAY ABOUT US';
+        // 2. Language Switcher Dictionary (English / Hindi)
+        const translations = {
+            en: {
+                tagline: "Trusted Manpower Supply Partner",
+                navAbout: "About Us",
+                navServices: "Services",
+                navClients: "Clients",
+                navApply: "Apply / Hire",
+                navContact: "Contact",
+                waBtnText: "Chat on WhatsApp",
+                heroTitle: "Reliable Manpower Solutions For Your Business",
+                heroDesc: "Connecting Skilled & Unskilled Workforce with Top Companies across India.",
+                btnJob: "Looking for Job?",
+                btnHire: "Need Manpower?",
+                clientsTitle: "Our Esteemed Clients"
+            },
+            hi: {
+                tagline: "विश्वसनीय मैनपावर सप्लाई पार्टनर",
+                navAbout: "हमारे बारे में",
+                navServices: "सेवाएं",
+                navClients: "हमारे क्लाइंट्स",
+                navApply: "आवेदन / हायरिंग",
+                navContact: "संपर्क करें",
+                waBtnText: "व्हाट्सएप पर बात करें",
+                heroTitle: "आपके व्यवसाय के लिए विश्वसनीय मैनपावर समाधान",
+                heroDesc: "पूरे भारत में शीर्ष कंपनियों के साथ कुशल और अकुशल कार्यबल को जोड़ना।",
+                btnJob: "नौकरी चाहिए?",
+                btnHire: "मैनपावर चाहिए?",
+                clientsTitle: "हमारे प्रमुख क्लाइंट्स"
             }
-        }
+        };
 
-        function switchTab(type) {
-            const wSec = document.getElementById('workerSection');
-            const eSec = document.getElementById('employerSection');
-            const wBtn = document.getElementById('tabWorker');
-            const eBtn = document.getElementById('tabEmployer');
+        function switchLanguage(lang) {
+            document.getElementById('tagline').textContent = translations[lang].tagline;
+            document.getElementById('nav-about').textContent = translations[lang].navAbout;
+            document.getElementById('nav-services').textContent = translations[lang].navServices;
+            document.getElementById('nav-clients').textContent = translations[lang].navClients;
+            document.getElementById('nav-apply').textContent = translations[lang].navApply;
+            document.getElementById('nav-contact').textContent = translations[lang].navContact;
+            document.getElementById('wa-btn-text').textContent = translations[lang].waBtnText;
+            document.getElementById('hero-title').textContent = translations[lang].heroTitle;
+            document.getElementById('hero-desc').textContent = translations[lang].heroDesc;
+            document.getElementById('btn-job').textContent = translations[lang].btnJob;
+            document.getElementById('btn-hire').textContent = translations[lang].btnHire;
+            document.getElementById('clients-title').textContent = translations[lang].clientsTitle;
 
-            if (type === 'worker') {
-                wSec.classList.remove('hidden');
-                eSec.classList.add('hidden');
-                wBtn.className = 'w-1/2 py-2 text-xs font-bold rounded-md transition bg-brandRed text-white';
-                eBtn.className = 'w-1/2 py-2 text-xs font-bold rounded-md transition text-slate-600 hover:text-slate-900';
-            } else {
-                eSec.classList.remove('hidden');
-                wSec.classList.add('hidden');
-                eBtn.className = 'w-1/2 py-2 text-xs font-bold rounded-md transition bg-brandRed text-white';
-                wBtn.className = 'w-1/2 py-2 text-xs font-bold rounded-md transition text-slate-600 hover:text-slate-900';
-            }
-        }
-
-        function handleFormSubmit(e, role) {
-            e.preventDefault();
-            alert(role + ' request submitted successfully!');
+            // Toggle button UI
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-hi').classList.toggle('active', lang === 'hi');
         }
     </script>
 </body>
