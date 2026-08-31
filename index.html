@@ -33,7 +33,7 @@
             line-height: 1.6;
         }
 
-        /* Top Bar (Live Time & Language) */
+        /* Top Bar */
         .top-bar {
             background-color: var(--primary-navy);
             color: #FFFFFF;
@@ -48,10 +48,9 @@
             margin-right: 15px;
         }
 
-        .top-actions {
+        .lang-switch {
             display: flex;
-            align-items: center;
-            gap: 15px;
+            gap: 5px;
         }
 
         .lang-switch button {
@@ -70,7 +69,7 @@
             border-color: var(--accent-orange);
         }
 
-        /* Header / Navbar */
+        /* Navbar */
         header {
             background-color: #FFFFFF;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -206,18 +205,13 @@
             background-color: #F1F5F9;
         }
 
-        /* Clients Section */
-        .clients-section {
-            padding: 60px 5%;
-            background-color: var(--light-bg);
-            text-align: center;
-        }
-
+        /* Section Title Styling */
         .section-title {
             font-size: 1.8rem;
             color: var(--primary-navy);
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             position: relative;
+            text-align: center;
         }
 
         .section-title::after {
@@ -228,6 +222,81 @@
             display: block;
             margin: 8px auto 0;
             border-radius: 2px;
+        }
+
+        /* About Us Section */
+        .about-section {
+            padding: 70px 5%;
+            background-color: #FFFFFF;
+        }
+
+        .about-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-content {
+            flex: 1 1 500px;
+        }
+
+        .about-content p {
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box {
+            background-color: var(--light-bg);
+            border-left: 4px solid var(--accent-orange);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .highlight-box h4 {
+            color: var(--primary-navy);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .highlight-box p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        .experience-badge {
+            background: var(--primary-navy);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            flex: 1 1 300px;
+            box-shadow: 0 10px 25px rgba(11, 25, 44, 0.15);
+        }
+
+        .experience-badge .years {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--accent-orange);
+            line-height: 1;
+        }
+
+        .experience-badge .label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        /* Clients Section */
+        .clients-section {
+            padding: 60px 5%;
+            background-color: var(--light-bg);
+            text-align: center;
         }
 
         .clients-grid {
@@ -266,7 +335,7 @@
             color: var(--text-muted);
         }
 
-        /* Floating WhatsApp Button */
+        /* Floating WhatsApp */
         .floating-wa {
             position: fixed;
             bottom: 25px;
@@ -290,7 +359,6 @@
             transform: scale(1.1);
         }
 
-        /* Mobile Responsive */
         @media (max-width: 768px) {
             nav { display: none; }
             .hero h2 { font-size: 1.8rem; }
@@ -311,15 +379,15 @@
             <div class="lang-switch">
                 <button id="btn-en" class="active" onclick="switchLanguage('en')">EN</button>
                 <button id="btn-hi" onclick="switchLanguage('hi')">हिंदी</button>
+                <button id="btn-mr" onclick="switchLanguage('mr')">मराठी</button>
             </div>
         </div>
     </div>
 
-    <!-- Main Navigation Bar -->
+    <!-- Header / Nav -->
     <header>
         <div class="logo-container">
-            <!-- Replace src with your image path if hosted locally, e.g., 'logo.png' -->
-            <img src="https://i.ibb.co/3kM2kKZ/pe-logo.png" alt="Pindari Enterprises Logo" onerror="this.onerror=null; this.src='WhatsApp Image 2026-08-24 at 10.51.34.jpeg';">
+            <img src="WhatsApp Image 2026-08-24 at 10.51.34.jpeg" alt="Pindari Enterprises Logo" onerror="this.src='https://i.ibb.co/3kM2kKZ/pe-logo.png'">
             <div class="brand-title">
                 <h1>PINDARI ENTERPRISES</h1>
                 <p id="tagline">Trusted Manpower Supply Partner</p>
@@ -334,7 +402,7 @@
                 <li><a href="#contact" id="nav-contact">Contact</a></li>
             </ul>
         </nav>
-        <a href="https://wa.me/919876543210?text=Hello%20Pindari%20Enterprises,%20I%20have%20an%20inquiry." target="_blank" class="btn-header-wa">
+        <a href="https://wa.me/919876543210?text=Hello%20Pindari%20Enterprises" target="_blank" class="btn-header-wa">
             <i class="fa-brands fa-whatsapp"></i> <span id="wa-btn-text">Chat on WhatsApp</span>
         </a>
     </header>
@@ -349,7 +417,30 @@
         </div>
     </section>
 
-    <!-- Client Showcase Section -->
+    <!-- About Us Section -->
+    <section class="about-section" id="about">
+        <h2 class="section-title" id="about-title">About Us</h2>
+        <div class="about-container">
+            <div class="about-content">
+                <p id="about-text-1">Welcome to <strong>Pindari Enterprises</strong>, a leading manpower solution provider committed to bridging the gap between industry requirements and skilled talent across India.</p>
+                
+                <div class="highlight-box">
+                    <h4 id="leader-title">Leadership & Legacy</h4>
+                    <p id="leader-desc">Led by <strong>Mr. Pawan Mishra</strong>, who has been working as a trusted bridge between industries and workforce for over <strong>20 years</strong>. His deep industry expertise ensures seamless recruitment, reliable staffing, and unmatched operational trust.</p>
+                </div>
+                
+                <p id="about-text-2">We specialize in providing customized workforce solutions for manufacturing, technical, polymer, logistics, and engineering sectors.</p>
+            </div>
+            
+            <div class="experience-badge">
+                <div class="years">20+</div>
+                <div class="label" id="exp-label">Years of Industry Excellence</div>
+                <p style="font-size: 0.85rem; color: #94A3B8; margin-top: 10px;" id="exp-sub">Serving India's Top Industrial Units</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Section -->
     <section class="clients-section" id="clients">
         <h2 class="section-title" id="clients-title">Our Esteemed Clients</h2>
         <div class="clients-grid">
@@ -388,31 +479,26 @@
         </div>
     </section>
 
-    <!-- Floating WhatsApp Button -->
+    <!-- Floating WhatsApp -->
     <a href="https://wa.me/919876543210?text=Hello%20Pindari%20Enterprises" target="_blank" class="floating-wa">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- JavaScript for Live Date Time & Multi-Language Switching -->
+    <!-- Scripts -->
     <script>
-        // 1. Live Clock & Date Script
+        // Live Date Time
         function updateDateTime() {
             const now = new Date();
             const options = { 
-                weekday: 'short', 
-                year: 'numeric', 
-                month: 'short', 
-                day: 'numeric',
-                hour: '2-digit', 
-                minute: '2-digit',
-                second: '2-digit'
+                weekday: 'short', year: 'numeric', month: 'short', day: 'numeric',
+                hour: '2-digit', minute: '2-digit', second: '2-digit'
             };
             document.getElementById('live-datetime').textContent = now.toLocaleString('en-US', options);
         }
         setInterval(updateDateTime, 1000);
         updateDateTime();
 
-        // 2. Language Switcher Dictionary (English / Hindi)
+        // Language Dictionary (English, Hindi, Marathi)
         const translations = {
             en: {
                 tagline: "Trusted Manpower Supply Partner",
@@ -426,6 +512,13 @@
                 heroDesc: "Connecting Skilled & Unskilled Workforce with Top Companies across India.",
                 btnJob: "Looking for Job?",
                 btnHire: "Need Manpower?",
+                aboutTitle: "About Us",
+                aboutText1: "Welcome to Pindari Enterprises, a leading manpower solution provider committed to bridging the gap between industry requirements and skilled talent across India.",
+                leaderTitle: "Leadership & Legacy",
+                leaderDesc: "Led by Mr. Pawan Mishra, who has been working as a trusted bridge between industries and workforce for over 20 years. His deep industry expertise ensures seamless recruitment and operational trust.",
+                aboutText2: "We specialize in providing customized workforce solutions for manufacturing, technical, polymer, logistics, and engineering sectors.",
+                expLabel: "Years of Industry Excellence",
+                expSub: "Serving India's Top Industrial Units",
                 clientsTitle: "Our Esteemed Clients"
             },
             hi: {
@@ -438,9 +531,33 @@
                 waBtnText: "व्हाट्सएप पर बात करें",
                 heroTitle: "आपके व्यवसाय के लिए विश्वसनीय मैनपावर समाधान",
                 heroDesc: "पूरे भारत में शीर्ष कंपनियों के साथ कुशल और अकुशल कार्यबल को जोड़ना।",
-                btnJob: "नौकरी चाहिए?",
-                btnHire: "मैनपावर चाहिए?",
+                aboutTitle: "हमारे बारे में",
+                aboutText1: "पिंडारी एंटरप्राइजेज में आपका स्वागत है, जो उद्योग की आवश्यकताओं और कुशल प्रतिभाओं के बीच की दूरी को कम करने के लिए प्रतिबद्ध है।",
+                leaderTitle: "नेतृत्व और अनुभव",
+                leaderDesc: "श्री पवन मिश्रा के नेतृत्व में, जो पिछले 20 से अधिक वर्षों से उद्योगों और कार्यबल के बीच एक मजबूत पुल (Bridge) के रूप में कार्य कर रहे हैं। उनका गहरा अनुभव व्यवसाय को सही मैनपावर प्रदान करता है।",
+                aboutText2: "हम मैन्युफैक्चरिंग, टेक्निकल, पॉलिमर, लॉजिस्टिक्स और इंजीनियरिंग क्षेत्रों के लिए सही मैनपावर प्रदान करते हैं।",
+                expLabel: "उद्योग में उत्कृष्टता के वर्ष",
+                expSub: "भारत की शीर्ष औद्योगिक इकाइयों की सेवा में",
                 clientsTitle: "हमारे प्रमुख क्लाइंट्स"
+            },
+            mr: {
+                tagline: "विश्वासार्ह मॅनपावर सप्लाय पार्टनर",
+                navAbout: "आमच्याबद्दल",
+                navServices: "सेवा",
+                navClients: "आमचे क्लायंट्स",
+                navApply: "अर्ज करा / भरती",
+                navContact: "संपर्क",
+                waBtnText: "व्हॉट्सॲपवर बोला",
+                heroTitle: "तुमच्या व्यवसायासाठी विश्वासार्ह मॅनपावर सोल्यूशन्स",
+                heroDesc: "संपूर्ण भारतातील आघाडीच्या कंपन्यांशी कुशल आणि अकुशल कामगारांना जोडणे.",
+                aboutTitle: "आमच्याबद्दल",
+                aboutText1: "पिंडारी एंटरप्रायझेसमध्ये आपले स्वागत आहे, जी उद्योगाच्या गरजा आणि कुशल कामगार यांच्यातील दरी सांधण्यासाठी कटिबद्ध आहे.",
+                leaderTitle: "नेतृत्व आणि अनुभव",
+                leaderDesc: "श्री पवन मिश्रा यांच्या नेतृत्वाखाली, जे गेल्या २० वर्षांहून अधिक काळापासून उद्योग आणि कामगार यांच्यात एक मजबूत पूल म्हणून कार्यरत आहेत. त्यांचा प्रदीर्घ अनुभव योग्य भरती सुनिश्चित करतो.",
+                aboutText2: "आम्ही मॅन्युफॅक्चरिंग, टेक्निकल, पॉलिमर, लॉजिस्टिक्स आणि इंजिनिअरिंग क्षेत्रासाठी मॅनपावर पुरवतो.",
+                expLabel: "उद्योगातील उत्कृष्टतेची वर्षे",
+                expSub: "भारतातील प्रमुख औद्योगिक युनिट्सना सेवा",
+                clientsTitle: "आमचे प्रमुख क्लायंट्स"
             }
         };
 
@@ -456,11 +573,22 @@
             document.getElementById('hero-desc').textContent = translations[lang].heroDesc;
             document.getElementById('btn-job').textContent = translations[lang].btnJob;
             document.getElementById('btn-hire').textContent = translations[lang].btnHire;
+            
+            // About section language switch
+            document.getElementById('about-title').textContent = translations[lang].aboutTitle;
+            document.getElementById('about-text-1').innerHTML = translations[lang].aboutText1;
+            document.getElementById('leader-title').textContent = translations[lang].leaderTitle;
+            document.getElementById('leader-desc').innerHTML = translations[lang].leaderDesc;
+            document.getElementById('about-text-2').textContent = translations[lang].aboutText2;
+            document.getElementById('exp-label').textContent = translations[lang].expLabel;
+            document.getElementById('exp-sub').textContent = translations[lang].expSub;
+            
             document.getElementById('clients-title').textContent = translations[lang].clientsTitle;
 
-            // Toggle button UI
+            // UI state
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
             document.getElementById('btn-hi').classList.toggle('active', lang === 'hi');
+            document.getElementById('btn-mr').classList.toggle('active', lang === 'mr');
         }
     </script>
 </body>
