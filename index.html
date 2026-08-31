@@ -20,6 +20,10 @@
             --text-muted: #64748B;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -57,10 +61,11 @@
             background: transparent;
             border: 1px solid rgba(255,255,255,0.3);
             color: #FFF;
-            padding: 2px 8px;
+            padding: 2px 10px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 600;
             transition: 0.3s;
         }
 
@@ -72,7 +77,7 @@
         /* Navbar */
         header {
             background-color: #FFFFFF;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             padding: 12px 5%;
             display: flex;
             justify-content: space-between;
@@ -86,11 +91,13 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            text-decoration: none;
         }
 
         .logo-container img {
             height: 48px;
             width: auto;
+            border-radius: 4px;
         }
 
         .brand-title h1 {
@@ -118,6 +125,7 @@
             font-weight: 600;
             font-size: 0.95rem;
             transition: color 0.3s;
+            cursor: pointer;
         }
 
         nav a:hover {
@@ -127,7 +135,7 @@
         .btn-header-wa {
             background-color: var(--whatsapp-green);
             color: white;
-            padding: 8px 16px;
+            padding: 10px 18px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
@@ -136,6 +144,7 @@
             gap: 8px;
             font-size: 0.85rem;
             transition: 0.3s;
+            cursor: pointer;
         }
 
         .btn-header-wa:hover {
@@ -144,7 +153,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(11, 25, 44, 0.9), rgba(11, 25, 44, 0.9)), 
+            background: linear-gradient(rgba(11, 25, 44, 0.92), rgba(11, 25, 44, 0.92)), 
                         url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1470') center/cover no-repeat;
             color: #FFFFFF;
             padding: 90px 5% 80px;
@@ -185,6 +194,8 @@
             font-weight: 600;
             transition: 0.3s;
             box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+            cursor: pointer;
+            border: none;
         }
 
         .btn-primary:hover {
@@ -199,6 +210,8 @@
             text-decoration: none;
             font-weight: 600;
             transition: 0.3s;
+            cursor: pointer;
+            border: none;
         }
 
         .btn-secondary:hover {
@@ -228,6 +241,7 @@
         .about-section {
             padding: 70px 5%;
             background-color: #FFFFFF;
+            scroll-margin-top: 70px;
         }
 
         .about-container {
@@ -272,7 +286,7 @@
         .experience-badge {
             background: var(--primary-navy);
             color: white;
-            padding: 25px;
+            padding: 30px;
             border-radius: 12px;
             text-align: center;
             flex: 1 1 300px;
@@ -294,9 +308,10 @@
 
         /* Clients Section */
         .clients-section {
-            padding: 60px 5%;
+            padding: 70px 5%;
             background-color: var(--light-bg);
             text-align: center;
+            scroll-margin-top: 70px;
         }
 
         .clients-grid {
@@ -333,6 +348,23 @@
         .client-card p {
             font-size: 0.85rem;
             color: var(--text-muted);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 70px 5%;
+            background-color: #FFFFFF;
+            text-align: center;
+            scroll-margin-top: 70px;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #E2E8F0;
         }
 
         /* Floating WhatsApp */
@@ -386,23 +418,21 @@
 
     <!-- Header / Nav -->
     <header>
-        <div class="logo-container">
+        <a href="#" class="logo-container">
             <img src="WhatsApp Image 2026-08-24 at 10.51.34.jpeg" alt="Pindari Enterprises Logo" onerror="this.src='https://i.ibb.co/3kM2kKZ/pe-logo.png'">
             <div class="brand-title">
                 <h1>PINDARI ENTERPRISES</h1>
                 <p id="tagline">Trusted Manpower Supply Partner</p>
             </div>
-        </div>
+        </a>
         <nav>
             <ul>
                 <li><a href="#about" id="nav-about">About Us</a></li>
-                <li><a href="#services" id="nav-services">Services</a></li>
                 <li><a href="#clients" id="nav-clients">Clients</a></li>
-                <li><a href="#apply" id="nav-apply">Apply / Hire</a></li>
                 <li><a href="#contact" id="nav-contact">Contact</a></li>
             </ul>
         </nav>
-        <a href="https://wa.me/919876543210?text=Hello%20Pindari%20Enterprises" target="_blank" class="btn-header-wa">
+        <a href="https://wa.me/919876543210?text=Hello%20Pindari%20Enterprises" target="_blank" rel="noopener noreferrer" class="btn-header-wa">
             <i class="fa-brands fa-whatsapp"></i> <span id="wa-btn-text">Chat on WhatsApp</span>
         </a>
     </header>
@@ -412,7 +442,7 @@
         <h2 id="hero-title">Reliable Manpower Solutions For Your Business</h2>
         <p id="hero-desc">Connecting Skilled & Unskilled Workforce with Top Companies across India.</p>
         <div class="hero-buttons">
-            <a href="#apply" class="btn-primary" id="btn-job">Looking for Job?</a>
+            <a href="https://wa.me/919876543210?text=I%20am%20looking%20for%20a%20job" target="_blank" rel="noopener noreferrer" class="btn-primary" id="btn-job">Looking for Job?</a>
             <a href="#contact" class="btn-secondary" id="btn-hire">Need Manpower?</a>
         </div>
     </section>
@@ -479,14 +509,25 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2 class="section-title" id="contact-title">Contact Us</h2>
+        <div class="contact-container">
+            <p style="margin-bottom: 20px; font-weight: 500;" id="contact-desc">Get in touch with us for immediate manpower deployment & partnership inquiry.</p>
+            <a href="https://wa.me/919876543210?text=Hello%20Pindari%20Enterprises,%20I%20want%20to%20hire%20manpower." target="_blank" rel="noopener noreferrer" class="btn-primary" style="display: inline-block;">
+                <i class="fa-brands fa-whatsapp"></i> <span id="contact-btn-text">Connect on WhatsApp</span>
+            </a>
+        </div>
+    </section>
+
     <!-- Floating WhatsApp -->
-    <a href="https://wa.me/919876543210?text=Hello%20Pindari%20Enterprises" target="_blank" class="floating-wa">
+    <a href="https://wa.me/919876543210?text=Hello%20Pindari%20Enterprises" target="_blank" rel="noopener noreferrer" class="floating-wa">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <!-- Scripts -->
     <script>
-        // Live Date Time
+        // Live Date Time Function
         function updateDateTime() {
             const now = new Date();
             const options = { 
@@ -498,14 +539,12 @@
         setInterval(updateDateTime, 1000);
         updateDateTime();
 
-        // Language Dictionary (English, Hindi, Marathi)
+        // Language Dictionary
         const translations = {
             en: {
                 tagline: "Trusted Manpower Supply Partner",
                 navAbout: "About Us",
-                navServices: "Services",
                 navClients: "Clients",
-                navApply: "Apply / Hire",
                 navContact: "Contact",
                 waBtnText: "Chat on WhatsApp",
                 heroTitle: "Reliable Manpower Solutions For Your Business",
@@ -519,18 +558,21 @@
                 aboutText2: "We specialize in providing customized workforce solutions for manufacturing, technical, polymer, logistics, and engineering sectors.",
                 expLabel: "Years of Industry Excellence",
                 expSub: "Serving India's Top Industrial Units",
-                clientsTitle: "Our Esteemed Clients"
+                clientsTitle: "Our Esteemed Clients",
+                contactTitle: "Contact Us",
+                contactDesc: "Get in touch with us for immediate manpower deployment & partnership inquiry.",
+                contactBtnText: "Connect on WhatsApp"
             },
             hi: {
                 tagline: "विश्वसनीय मैनपावर सप्लाई पार्टनर",
                 navAbout: "हमारे बारे में",
-                navServices: "सेवाएं",
                 navClients: "हमारे क्लाइंट्स",
-                navApply: "आवेदन / हायरिंग",
                 navContact: "संपर्क करें",
                 waBtnText: "व्हाट्सएप पर बात करें",
                 heroTitle: "आपके व्यवसाय के लिए विश्वसनीय मैनपावर समाधान",
                 heroDesc: "पूरे भारत में शीर्ष कंपनियों के साथ कुशल और अकुशल कार्यबल को जोड़ना।",
+                btnJob: "नौकरी चाहिए?",
+                btnHire: "मैनपावर चाहिए?",
                 aboutTitle: "हमारे बारे में",
                 aboutText1: "पिंडारी एंटरप्राइजेज में आपका स्वागत है, जो उद्योग की आवश्यकताओं और कुशल प्रतिभाओं के बीच की दूरी को कम करने के लिए प्रतिबद्ध है।",
                 leaderTitle: "नेतृत्व और अनुभव",
@@ -538,18 +580,21 @@
                 aboutText2: "हम मैन्युफैक्चरिंग, टेक्निकल, पॉलिमर, लॉजिस्टिक्स और इंजीनियरिंग क्षेत्रों के लिए सही मैनपावर प्रदान करते हैं।",
                 expLabel: "उद्योग में उत्कृष्टता के वर्ष",
                 expSub: "भारत की शीर्ष औद्योगिक इकाइयों की सेवा में",
-                clientsTitle: "हमारे प्रमुख क्लाइंट्स"
+                clientsTitle: "हमारे प्रमुख क्लाइंट्स",
+                contactTitle: "संपर्क करें",
+                contactDesc: "मैनपावर आपूर्ति और व्यावसायिक पूछताछ के लिए तुरंत हमसे संपर्क करें।",
+                contactBtnText: "व्हाट्सएप पर संपर्क करें"
             },
             mr: {
                 tagline: "विश्वासार्ह मॅनपावर सप्लाय पार्टनर",
                 navAbout: "आमच्याबद्दल",
-                navServices: "सेवा",
                 navClients: "आमचे क्लायंट्स",
-                navApply: "अर्ज करा / भरती",
                 navContact: "संपर्क",
                 waBtnText: "व्हॉट्सॲपवर बोला",
                 heroTitle: "तुमच्या व्यवसायासाठी विश्वासार्ह मॅनपावर सोल्यूशन्स",
                 heroDesc: "संपूर्ण भारतातील आघाडीच्या कंपन्यांशी कुशल आणि अकुशल कामगारांना जोडणे.",
+                btnJob: "नोकरी हवी आहे?",
+                btnHire: "मॅनपावर हवे आहे?",
                 aboutTitle: "आमच्याबद्दल",
                 aboutText1: "पिंडारी एंटरप्रायझेसमध्ये आपले स्वागत आहे, जी उद्योगाच्या गरजा आणि कुशल कामगार यांच्यातील दरी सांधण्यासाठी कटिबद्ध आहे.",
                 leaderTitle: "नेतृत्व आणि अनुभव",
@@ -557,16 +602,17 @@
                 aboutText2: "आम्ही मॅन्युफॅक्चरिंग, टेक्निकल, पॉलिमर, लॉजिस्टिक्स आणि इंजिनिअरिंग क्षेत्रासाठी मॅनपावर पुरवतो.",
                 expLabel: "उद्योगातील उत्कृष्टतेची वर्षे",
                 expSub: "भारतातील प्रमुख औद्योगिक युनिट्सना सेवा",
-                clientsTitle: "आमचे प्रमुख क्लायंट्स"
+                clientsTitle: "आमचे प्रमुख क्लायंट्स",
+                contactTitle: "संपर्क करा",
+                contactDesc: "मॅनपावर पुरवठा आणि व्यावसायिक चौकशीसाठी तात्काळ आमच्याशी संपर्क साधा.",
+                contactBtnText: "व्हॉट्सॲपवर संपर्क साधा"
             }
         };
 
         function switchLanguage(lang) {
             document.getElementById('tagline').textContent = translations[lang].tagline;
             document.getElementById('nav-about').textContent = translations[lang].navAbout;
-            document.getElementById('nav-services').textContent = translations[lang].navServices;
             document.getElementById('nav-clients').textContent = translations[lang].navClients;
-            document.getElementById('nav-apply').textContent = translations[lang].navApply;
             document.getElementById('nav-contact').textContent = translations[lang].navContact;
             document.getElementById('wa-btn-text').textContent = translations[lang].waBtnText;
             document.getElementById('hero-title').textContent = translations[lang].heroTitle;
@@ -574,7 +620,6 @@
             document.getElementById('btn-job').textContent = translations[lang].btnJob;
             document.getElementById('btn-hire').textContent = translations[lang].btnHire;
             
-            // About section language switch
             document.getElementById('about-title').textContent = translations[lang].aboutTitle;
             document.getElementById('about-text-1').innerHTML = translations[lang].aboutText1;
             document.getElementById('leader-title').textContent = translations[lang].leaderTitle;
@@ -584,8 +629,10 @@
             document.getElementById('exp-sub').textContent = translations[lang].expSub;
             
             document.getElementById('clients-title').textContent = translations[lang].clientsTitle;
+            document.getElementById('contact-title').textContent = translations[lang].contactTitle;
+            document.getElementById('contact-desc').textContent = translations[lang].contactDesc;
+            document.getElementById('contact-btn-text').textContent = translations[lang].contactBtnText;
 
-            // UI state
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
             document.getElementById('btn-hi').classList.toggle('active', lang === 'hi');
             document.getElementById('btn-mr').classList.toggle('active', lang === 'mr');
