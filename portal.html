@@ -16,6 +16,13 @@
         .portal-card { background: white; padding: 30px; border-radius: 12px; border: 1px solid #E2E8F0; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .portal-card i { font-size: 2.5rem; color: var(--primary-red); margin-bottom: 15px; }
         .portal-card h3 { color: var(--primary-navy); margin-bottom: 10px; }
+        
+        /* Modal Popup Styling */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; }
+        .modal-content { background: white; padding: 30px; border-radius: 12px; width: 100%; max-width: 400px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); position: relative; }
+        .modal-content h3 { margin-bottom: 20px; color: var(--primary-navy); }
+        .modal-content input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #CBD5E1; border-radius: 6px; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.2rem; cursor: pointer; color: var(--text-muted); }
     </style>
 </head>
 <body>
@@ -31,20 +38,95 @@
             <i class="fa-solid fa-building-user"></i>
             <h3>Client Portal Login</h3>
             <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Access worker attendance logs, daily deployment sheets, and billing statements.</p>
-            <button class="btn-main" style="width: 100%;" onclick="alert('Redirecting to Client Authorization System...')">Client Login</button>
+            <button class="btn-main" style="width: 100%;" onclick="openAuthModal('Client Portal')">Client Login</button>
         </div>
         <div class="portal-card">
             <i class="fa-solid fa-user-gear"></i>
             <h3>Worker / Employee Portal</h3>
             <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">View pay slips, salary advances, job assignments, and PF status.</p>
-            <button class="btn-dark" style="width: 100%; justify-content: center;" onclick="alert('Redirecting to Worker Portal System...')">Worker Login</button>
+            <button class="btn-dark" style="width: 100%; justify-content: center;" onclick="openAuthModal('Worker Portal')">Worker Login</button>
         </div>
         <div class="portal-card">
             <i class="fa-solid fa-user-shield"></i>
             <h3>Admin & Operation Desk</h3>
             <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Internal portal for Supervisor attendance tracking and site deployment.</p>
-            <button class="btn-main" style="background: var(--primary-navy); width: 100%;" onclick="alert('Admin Login Restricted.')">Admin Access</button>
+            <button class="btn-main" style="background: var(--primary-navy); width: 100%;" onclick="openAuthModal('Admin Desk')">Admin Access</button>
         </div>
     </div>
+
+    <!-- Login/Signup Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeAuthModal()">&times;</span>
+            <h3 id="modalTitle">Login</h3>
+            <input type="email" id="email" placeholder="Enter Email" required>
+            <input type="password" id="password" placeholder="Enter Password" required>
+            <button class="btn-main" style="width: 100%; margin-bottom: 10px;" onclick="handleLogin()">Login</button>
+            <button class="btn-dark" style="width: 100%; justify-content: center;" onclick="handleSignup()">Create Account (Signup)</button>
+            <p id="authMessage" style="font-size: 0.8rem; margin-top: 10px; text-align: center; color: var(--primary-red);"></p>
+        </div>
+    </div>
+
+    <!-- Firebase SDK & Script Logic -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase/app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase/auth.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase/firestore.js";
+
+        // Firebase Configuration (Aapka apna config jo Firebase console se mila hai)
+        const firebaseConfig = {
+          apiKey: "AIzaSyB44x8-yYbIX9AAba2iqcFpNUbTkowSAk",
+          authDomain: "pindari-enterprises.firebaseapp.com",
+          projectId: "pindari-enterprises",
+          storageBucket: "pindari-enterprises.firebasestorage.app",
+          messagingSenderId: "11185607401",
+          appId: "1:11185607401:web:57261718a0935fafbd9678"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Global functions modal aur auth ke liye
+        window.openAuthModal = function(portalType) {
+            document.getElementById('modalTitle').innerText = portalType + " Access";
+            document.getElementById('authModal').style.display = 'flex';
+        }
+
+        window.closeAuthModal = function() {
+            document.getElementById('authModal').style.display = 'none';
+        }
+
+        window.handleSignup = async function() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const msg = document.getElementById('authMessage');
+
+            try {
+                await createUserWithEmailAndPassword(auth, email, password);
+                msg.style.color = "green";
+                msg.innerText = "Account created successfully! You can now login.";
+            } catch (error) {
+                msg.style.color = "red";
+                msg.innerText = error.message;
+            }
+        }
+
+        window.handleLogin = async function() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const msg = document.getElementById('authMessage');
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                alert("Login successful! Welcome to Pindari Enterprises Portal.");
+                closeAuthModal();
+            } catch (error) {
+                msg.style.color = "red";
+                msg.innerText = error.message;
+            }
+        }
+    </script>
 </body>
 </html>
